@@ -8,10 +8,10 @@ const Header = () => {
     <>
       {/*<!-- Component: Navbar with Avatar --> */}
       {/*<!-- Header --> */}
-      <header className="fixed w-full">
-        <div className="border-b-1 relative z-20 w-full border-b border-slate-200 bg-white/90 shadow-lg shadow-slate-700/5 after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
+      <header className="fixed w-full z-20">
+        <div className="border-b-1 relative z-20 w-full bg-transparent shadow-lg shadow-slate-700/5 after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:backdrop-blur-sm lg:after:hidden">
           <div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
-            <nav aria-label="main navigation" className="flex h-[5rem] justify-between font-medium text-slate-700 items-center" role="navigation">
+            <nav aria-label="main navigation" className="flex h-[5rem] justify-between font-medium text-white items-center" role="navigation">
               {/*      <!-- Brand logo --> */}
               <Link to="/">
                 <img src={logo} className="w-40" alt="site logo" />
