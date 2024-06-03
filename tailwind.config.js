@@ -5,7 +5,7 @@ module.exports = {
   prefix: '',
   theme: {
     fontFamily: {
-      sans: "'General Sans', sans-serif",
+      sans: ['General Sans', 'sans-serif'],
     },
     container: {
       center: true,
