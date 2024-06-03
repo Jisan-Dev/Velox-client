@@ -3,21 +3,21 @@ import React from 'react';
 
 const FeaturedServices = () => {
   return (
-    <section>
+    <section className="mt-20 sm:mt-28">
       <SectionHeader heading="Featured Services" subHeading="Discover the features designed to keep you motivated and on track" />
       <div id="services" className="section relative pb-8 md:pb-8 bg-white">
         <div className="container xl:max-w-6xl mx-auto px-4">
           {/* row */}
-          <div className="flex flex-wrap flex-row -mx-4 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 -mx-4 text-center max-sm:px-6">
             {services.map((service, index) => (
               <div
                 key={index}
-                className={`flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/3 lg:px-6`}
+                className={``}
                 data-wow-duration="1s"
                 data-wow-delay={`${index * 0.1}s`}
                 style={{ visibility: 'visible', animationDuration: '1s', animationName: 'fadeInUp' }}>
                 {/* service block */}
-                <div className="py-8 px-8 bg-orange-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2 h-full rounded-lg">
+                <div className="py-16 px-10 bg-orange-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2 h-full rounded-lg">
                   <div className="inline-block text-gray-900 mb-4">
                     {/* icon */}
                     <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" className={service.iconClass} viewBox="0 0 16 16">
@@ -25,7 +25,7 @@ const FeaturedServices = () => {
                       {service.iconPath2 && <path d={service.iconPath2}></path>}
                     </svg>
                   </div>
-                  <h3 className="text-2xl leading-normal mb-2 font-semibold text-black">{service.title}</h3>
+                  <h3 className="text-2xl leading-tight mb-2 font-semibold text-black ">{service.title}</h3>
                   <p className="text-gray-500 text-lg">{service.description}</p>
                 </div>
                 {/* end service block */}
