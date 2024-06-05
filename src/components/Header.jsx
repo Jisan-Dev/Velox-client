@@ -30,7 +30,7 @@ const Header = () => {
         <div
           className={`border-b-1 relative z-20 w-full ${
             scrollPosition ? 'bg-white' : 'bg-transparent'
-          } shadow-lg shadow-slate-700/5 after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:backdrop-blur-sm lg:after:hidden`}>
+          } shadow-lg shadow-slate-700/5 after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:backdrop-blur-sm lg:after:hidden transition-all duration-500`}>
           <div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
             <nav
               aria-label="main navigation"
@@ -96,17 +96,14 @@ const Header = () => {
                 </li>
               </ul>
               <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
-                <Button size="lg" className="mr-2">
-                  Login
-                </Button>
                 {/*        <!-- Avatar --> */}
                 <a href="#" className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white">
                   <img src="https://i.pravatar.cc/40?img=35" alt="user name" title="user name" width="40" height="40" className="max-w-full rounded-full" />
-                  <span className="absolute bottom-0 right-0 inline-flex items-center justify-center gap-1 rounded-full border-2 border-white bg-pink-500 p-1 text-sm text-white">
-                    <span className="sr-only"> 7 new emails </span>
-                  </span>
                 </a>
                 {/*        <!-- End Avatar --> */}
+                <Button size="lg" className="ml-2">
+                  Login
+                </Button>
               </div>
             </nav>
           </div>
