@@ -4,6 +4,7 @@ import Hero from './hero/Hero';
 import SectionHeader from '@/components/SectionHeader';
 import FeaturedServices from './featured-services/FeaturedServices';
 import AboutUs from './about-us/AboutUs';
+import Newsletter from '@/components/Newsletter';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <Hero />
       <FeaturedServices />
       <AboutUs />
+      <Newsletter />
     </div>
   );
 };
