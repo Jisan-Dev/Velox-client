@@ -1,17 +1,41 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/logovelox.png';
 import { Button } from './ui/button';
 const Header = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
+
+  const [scrollPosition, setScrollPosition] = useState(false);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    if (position > 580) {
+      setScrollPosition(true);
+    } else {
+      setScrollPosition(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <>
       {/*<!-- Component: Navbar with Avatar --> */}
       {/*<!-- Header --> */}
       <header className="fixed w-full z-20">
-        <div className="border-b-1 relative z-20 w-full bg-transparent shadow-lg shadow-slate-700/5 after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:backdrop-blur-sm lg:after:hidden">
+        <div
+          className={`border-b-1 relative z-20 w-full ${
+            scrollPosition ? 'bg-white' : 'bg-transparent'
+          } shadow-lg shadow-slate-700/5 after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:backdrop-blur-sm lg:after:hidden`}>
           <div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
-            <nav aria-label="main navigation" className="flex h-[5rem] justify-between font-medium text-white items-center" role="navigation">
+            <nav
+              aria-label="main navigation"
+              className={`flex h-[5rem] justify-between font-medium items-center ${scrollPosition ? 'text-neutral-900' : 'text-white'} `}
+              role="navigation">
               {/*      <!-- Brand logo --> */}
               <Link to="/">
                 <img src={logo} className="w-40" alt="site logo" />
@@ -47,8 +71,7 @@ const Header = () => {
                   <a
                     role="menuitem"
                     aria-haspopup="false"
-                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8"
-                    href="javascript:void(0)">
+                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8">
                     <span>Blog</span>
                   </a>
                 </li>
