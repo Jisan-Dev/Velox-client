@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/images/logovelox.png';
 import { Button } from './ui/button';
 const Header = () => {
@@ -72,33 +72,60 @@ const Header = () => {
                 className={`absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
                   isToggleOpen ? 'visible opacity-100 backdrop-blur-sm' : 'invisible opacity-0'
                 }`}>
-                <li role="none" className="flex items-stretch">
-                  <a
+                <NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-orange-600 flex items-stretch' : 'flex items-stretch')}>
+                  <span
                     role="menuitem"
                     aria-haspopup="false"
-                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8">
-                    <span>Blog</span>
-                  </a>
-                </li>
-                <li role="none" className="flex items-stretch">
-                  <a
+                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8 font-semibold">
+                    <span>Home</span>
+                  </span>
+                </NavLink>
+                <NavLink to={'/all-trainers'} className={({ isActive }) => (isActive ? 'text-orange-600 flex items-stretch' : 'flex items-stretch')}>
+                  <span
                     role="menuitem"
                     aria-current="page"
                     aria-haspopup="false"
-                    className="flex items-center gap-2 py-4 text-orange-500 transition-colors duration-300 hover:text-orange-600 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-600 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8"
                     href="javascript:void(0)">
-                    <span>Planning</span>
-                  </a>
-                </li>
-                <li role="none" className="flex items-stretch">
-                  <a
+                    <span>All Trainers</span>
+                  </span>
+                </NavLink>
+                <NavLink to={'/all-classes'} className={({ isActive }) => (isActive ? 'text-orange-600 flex items-stretch' : 'flex items-stretch')}>
+                  <span
                     role="menuitem"
                     aria-haspopup="false"
                     className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8"
                     href="javascript:void(0)">
-                    <span>About me</span>
-                  </a>
-                </li>
+                    <span>All Classes</span>
+                  </span>
+                </NavLink>
+                <NavLink to={'/dashboard'} className={({ isActive }) => (isActive ? 'text-orange-600 flex items-stretch' : 'flex items-stretch')}>
+                  <span
+                    role="menuitem"
+                    aria-haspopup="false"
+                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                    href="javascript:void(0)">
+                    <span>Dashboard</span>
+                  </span>
+                </NavLink>
+                <NavLink to={'/community'} className={({ isActive }) => (isActive ? 'text-orange-600 flex items-stretch' : 'flex items-stretch')}>
+                  <span
+                    role="menuitem"
+                    aria-haspopup="false"
+                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                    href="javascript:void(0)">
+                    <span>Community</span>
+                  </span>
+                </NavLink>
+                <NavLink to={'/profile'} className={({ isActive }) => (isActive ? 'text-orange-600 flex items-stretch' : 'flex items-stretch')}>
+                  <span
+                    role="menuitem"
+                    aria-haspopup="false"
+                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                    href="javascript:void(0)">
+                    <span>Profile</span>
+                  </span>
+                </NavLink>
               </ul>
               <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
                 {/*        <!-- Avatar --> */}
@@ -106,9 +133,11 @@ const Header = () => {
                   <img src="https://i.pravatar.cc/40?img=35" alt="user name" title="user name" width="40" height="40" className="max-w-full rounded-full" />
                 </a>
                 {/*        <!-- End Avatar --> */}
-                <Button size="lg" className="ml-2">
-                  Login
-                </Button>
+                <Link to={'/login'}>
+                  <Button size="lg" className="ml-2">
+                    Login
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>

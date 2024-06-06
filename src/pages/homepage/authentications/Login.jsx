@@ -45,9 +45,9 @@ const Login = () => {
               </div>
             </form>
             <div className="mt-4 text-center text-sm">
-              Already have an account?{' '}
-              <Link href="/login" className="underline">
-                Login
+              Doesn&#39;t have an account?{' '}
+              <Link to="/register" className="underline">
+                Sign Up
               </Link>
             </div>
           </CardContent>

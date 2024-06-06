@@ -58,7 +58,7 @@ const Register = () => {
             </form>
             <div className="mt-4 text-center text-sm">
               Already have an account?{' '}
-              <Link href="/login" className="underline">
+              <Link to="/login" className="underline">
                 Login
               </Link>
             </div>
@@ -66,7 +66,7 @@ const Register = () => {
         </Card>
 
         <div data-aos="fade-left" data-aos-duration="1000" className=" w-1/2 max-sm:w-full">
-          <img src={signUp} className="h-[800px] w-full object-cover" />
+          <img src={signUp} className="h-[800px] w-full object-cover" loading="lazy" />
         </div>
       </div>
     </div>
