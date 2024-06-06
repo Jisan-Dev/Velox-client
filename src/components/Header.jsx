@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/images/logovelox.png';
 import { Button } from './ui/button';
 const Header = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
-
+  const location = useLocation();
   const [scrollPosition, setScrollPosition] = useState(false);
+
   const handleScroll = () => {
     const position = window.pageYOffset;
     if (position > 580) {
@@ -14,6 +15,7 @@ const Header = () => {
       setScrollPosition(false);
     }
   };
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
 
@@ -21,7 +23,8 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [location]);
+
   return (
     <>
       {/*<!-- Component: Navbar with Avatar --> */}
@@ -29,12 +32,14 @@ const Header = () => {
       <header className="fixed w-full z-20">
         <div
           className={`border-b-1 relative z-20 w-full ${
-            scrollPosition ? 'bg-white' : 'bg-transparent'
+            location.pathname === '/' ? (scrollPosition ? 'bg-white' : 'bg-transparent') : 'bg-white'
           } shadow-lg shadow-slate-700/5 after:absolute after:left-0 after:top-full after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:backdrop-blur-sm lg:after:hidden transition-all duration-500`}>
           <div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
             <nav
               aria-label="main navigation"
-              className={`flex h-[5rem] justify-between font-medium items-center ${scrollPosition ? 'text-neutral-900' : 'text-white'} `}
+              className={`flex h-[5rem] justify-between font-medium items-center ${
+                location.pathname === '/' ? (scrollPosition ? 'text-neutral-900' : 'text-white') : 'text-neutral-900'
+              }`}
               role="navigation">
               {/*      <!-- Brand logo --> */}
               <Link to="/">
