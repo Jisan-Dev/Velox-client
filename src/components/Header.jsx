@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/images/logovelox.png';
 import { Button } from './ui/button';
+import useAuth from '@/hooks/useAuth';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+
 const Header = () => {
+  const { user } = useAuth();
   const [isToggleOpen, setIsToggleOpen] = useState(false);
   const location = useLocation();
   const [scrollPosition, setScrollPosition] = useState(false);
@@ -123,16 +127,23 @@ const Header = () => {
                 </NavLink>
               </ul>
               <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
-                {/*        <!-- Avatar --> */}
-                <a href="#" className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white">
-                  <img src="https://i.pravatar.cc/40?img=35" alt="user name" title="user name" width="40" height="40" className="max-w-full rounded-full" />
-                </a>
-                {/*        <!-- End Avatar --> */}
-                <Link to={'/login'}>
-                  <Button size="lg" className="ml-2">
-                    Login
-                  </Button>
-                </Link>
+                {user ? (
+                  <>
+                    {/* <!-- Avatar --> */}
+                    <Avatar>
+                      <AvatarImage src={user?.photoURL} referrerPolicy="no-referer" alt="@shadcn" />
+                      <AvatarFallback>DP</AvatarFallback>
+                    </Avatar>
+                    <Button size="lg" className="ml-2">
+                      Logout
+                    </Button>
+                    {/* <!-- End Avatar -->  */}
+                  </>
+                ) : (
+                  <Link to={'/login'}>
+                    <Button size="lg">Login</Button>
+                  </Link>
+                )}
               </div>
             </nav>
           </div>
