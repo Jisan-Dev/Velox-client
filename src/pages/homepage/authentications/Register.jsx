@@ -7,6 +7,7 @@ import signUp from '@/assets/images/signUp.jpg';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import SocialLogin from '@/components/SocialLogin';
 
 const schema = z.object({
   name: z.string().min(2).max(20),
@@ -72,10 +73,7 @@ const Register = () => {
                 <Button type="submit" className="w-full">
                   Create an account
                 </Button>
-                {/* <Button onClick={googleSignIn} variant="outline" className="w-full"> */}
-                <Button variant="outline" className="w-full">
-                  Sign up with Google
-                </Button>
+                <SocialLogin />
               </div>
             </form>
             <div className="mt-4 text-center text-sm">

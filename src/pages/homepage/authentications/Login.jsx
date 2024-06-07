@@ -7,7 +7,7 @@ import signUp from '@/assets/images/hero2.jpg';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import useAuth from '@/hooks/useAuth';
+import SocialLogin from '@/components/SocialLogin';
 
 const schema = z.object({
   email: z.string().email(),
@@ -20,8 +20,6 @@ const schema = z.object({
 });
 
 const Login = () => {
-  const { user } = useAuth();
-  console.log(user);
   const {
     register,
     reset,
@@ -63,10 +61,7 @@ const Login = () => {
                 <Button type="submit" className="w-full">
                   Login
                 </Button>
-                {/* <Button onClick={googleSignIn} variant="outline" className="w-full"> */}
-                <Button variant="outline" className="w-full">
-                  Continue with Google
-                </Button>
+                <SocialLogin />
               </div>
             </form>
             <div className="mt-4 text-center text-sm">

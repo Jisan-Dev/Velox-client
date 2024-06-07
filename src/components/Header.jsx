@@ -85,8 +85,7 @@ const Header = () => {
                     role="menuitem"
                     aria-current="page"
                     aria-haspopup="false"
-                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-600 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8"
-                    href="javascript:void(0)">
+                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-600 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8">
                     <span>All Trainers</span>
                   </span>
                 </NavLink>
@@ -94,8 +93,7 @@ const Header = () => {
                   <span
                     role="menuitem"
                     aria-haspopup="false"
-                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8"
-                    href="javascript:void(0)">
+                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8">
                     <span>All Classes</span>
                   </span>
                 </NavLink>
@@ -103,8 +101,7 @@ const Header = () => {
                   <span
                     role="menuitem"
                     aria-haspopup="false"
-                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8"
-                    href="javascript:void(0)">
+                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8">
                     <span>Dashboard</span>
                   </span>
                 </NavLink>
@@ -112,8 +109,7 @@ const Header = () => {
                   <span
                     role="menuitem"
                     aria-haspopup="false"
-                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8"
-                    href="javascript:void(0)">
+                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8">
                     <span>Community</span>
                   </span>
                 </NavLink>
@@ -121,8 +117,7 @@ const Header = () => {
                   <span
                     role="menuitem"
                     aria-haspopup="false"
-                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8"
-                    href="javascript:void(0)">
+                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-orange-500 focus:text-orange-600 focus:outline-none focus-visible:outline-none lg:px-8">
                     <span>Profile</span>
                   </span>
                 </NavLink>
