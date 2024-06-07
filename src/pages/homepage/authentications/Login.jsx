@@ -7,6 +7,7 @@ import signUp from '@/assets/images/hero2.jpg';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import useAuth from '@/hooks/useAuth';
 
 const schema = z.object({
   email: z.string().email(),
@@ -19,6 +20,8 @@ const schema = z.object({
 });
 
 const Login = () => {
+  const { user } = useAuth();
+  console.log(user);
   const {
     register,
     reset,
