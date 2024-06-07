@@ -4,9 +4,10 @@ import logo from '../assets/images/logovelox.png';
 import { Button } from './ui/button';
 import useAuth from '@/hooks/useAuth';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import toast from 'react-hot-toast';
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
   const [isToggleOpen, setIsToggleOpen] = useState(false);
   const location = useLocation();
   const [scrollPosition, setScrollPosition] = useState(false);
@@ -28,6 +29,18 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [location]);
+
+  const signOut = async () => {
+    await logOut();
+    toast.success('logged out successfully', {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+        padding: '14px 20px',
+      },
+    });
+  };
 
   return (
     <>
@@ -134,7 +147,7 @@ const Header = () => {
                       <AvatarImage src={user?.photoURL} referrerPolicy="no-referer" alt="@shadcn" />
                       <AvatarFallback>DP</AvatarFallback>
                     </Avatar>
-                    <Button size="lg" className="ml-2">
+                    <Button onClick={signOut} size="lg" className="ml-2">
                       Logout
                     </Button>
                     {/* <!-- End Avatar -->  */}

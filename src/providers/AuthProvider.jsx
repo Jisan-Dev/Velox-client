@@ -1,6 +1,7 @@
 import { app } from '@/firebase/firebase.config';
 import { createContext, useEffect, useState } from 'react';
-import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
+import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { set } from 'react-hook-form';
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -13,6 +14,10 @@ const AuthProvider = ({ children }) => {
   const signInWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
+  };
+
+  const logOut = () => {
+    return signOut(auth);
   };
 
   useEffect(() => {
@@ -32,7 +37,7 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const authInfo = { user, loading, signInWithGoogle };
+  const authInfo = { user, loading, signInWithGoogle, logOut };
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };
 
