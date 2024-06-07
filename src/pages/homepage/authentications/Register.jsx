@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import SocialLogin from '@/components/SocialLogin';
+import useAuth from '@/hooks/useAuth';
 
 const schema = z.object({
   name: z.string().min(2).max(20),
@@ -22,6 +23,7 @@ const schema = z.object({
 });
 
 const Register = () => {
+  const { createUser, updateUserProfile, setUser } = useAuth();
   const {
     register,
     handleSubmit,
@@ -29,8 +31,15 @@ const Register = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
-  const submitHandler = (data) => {
-    console.log(data);
+  const submitHandler = async (data) => {
+    try {
+      const { user } = await createUser(data.email, data.password);
+      console.log('user from reg page', user);
+      await updateUserProfile(data.name, data.photo);
+      setUser({ ...user, photoURL: data.photo, displayName: data.name });
+    } catch (error) {
+      console.log(error);
+    }
     reset();
   };
 
