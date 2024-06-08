@@ -2,12 +2,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import signUp from '@/assets/images/hero2.jpg';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import SocialLogin from '@/components/SocialLogin';
+import useAuth from '@/hooks/useAuth';
+import toast from 'react-hot-toast';
 
 const schema = z.object({
   email: z.string().email(),
@@ -20,6 +22,10 @@ const schema = z.object({
 });
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+  const { signIn } = useAuth();
   const {
     register,
     reset,
@@ -27,8 +33,28 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
-  const submitHandler = (data) => {
-    console.log(data);
+  const submitHandler = async (data) => {
+    try {
+      await signIn(data.email, data.password);
+      toast.success('logged in successfully', {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
+      navigate(from, { replace: true });
+    } catch (error) {
+      toast.error(error.code || error.message, {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
+    }
     reset();
   };
 
