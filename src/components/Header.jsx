@@ -143,7 +143,6 @@ const Header = () => {
                 {user ? (
                   <>
                     {/* <!-- Avatar --> */}
-                    <span>{user.displayName}</span>
                     <Avatar>
                       <AvatarImage src={user?.photoURL} referrerPolicy="no-referer" alt="@shadcn" />
                       <AvatarFallback>DP</AvatarFallback>
