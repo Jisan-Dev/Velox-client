@@ -2,13 +2,15 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import signUp from '@/assets/images/signUp.jpg';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import SocialLogin from '@/components/SocialLogin';
 import useAuth from '@/hooks/useAuth';
+import axiosPublic from '@/hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
 
 const schema = z.object({
   name: z.string().min(2).max(20),
@@ -23,6 +25,7 @@ const schema = z.object({
 });
 
 const Register = () => {
+  const navigate = useNavigate();
   const { createUser, updateUserProfile, setUser } = useAuth();
   const {
     register,
@@ -37,8 +40,28 @@ const Register = () => {
       console.log('user from reg page', user);
       await updateUserProfile(data.name, data.photo);
       setUser({ ...user, photoURL: data.photo, displayName: data.name });
+      const userInfo = { name: data.name, email: data.email, photo: data.photo };
+      const { data: res } = await axiosPublic.post('/users', userInfo);
+      if (res.insertedId) {
+        toast.success('Registered successfully', {
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+            padding: '14px 20px',
+          },
+        });
+        navigate('/');
+      }
     } catch (error) {
-      console.log(error);
+      toast.error(error.code || error.message, {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+          padding: '14px 20px',
+        },
+      });
     }
     reset();
   };
