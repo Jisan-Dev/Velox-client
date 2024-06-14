@@ -5,6 +5,8 @@ import Register from '@/pages/homepage/authentications/Register';
 import Login from '@/pages/homepage/authentications/Login';
 import AllClasses from '@/pages/all-classes/AllClasses';
 import AllTrainers from '@/pages/all-trainers/AllTrainers';
+import TrainerDetails from '@/pages/trainer-details/TrainerDetails';
+import axiosPublic from '@/hooks/useAxiosPublic';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,11 @@ const router = createBrowserRouter([
       {
         path: '/all-trainers',
         element: <AllTrainers />,
+      },
+      {
+        path: '/trainers/:id',
+        element: <TrainerDetails />,
+        loader: ({ params }) => axiosPublic.get(`/trainers/${params.id}`),
       },
     ],
   },

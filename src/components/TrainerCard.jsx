@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
+
 const TrainerCard = ({ trainer }) => {
-  const { trainerName, details, yearsOfExperience, availableSlots, profileImage } = trainer || {};
+  const { trainerName, details, yearsOfExperience, availableSlots, profileImage, _id } = trainer || {};
   return (
     <div className="items-center bg-gray-50 rounded-lg shadow-xl shadow-gray-900/10 sm:flex">
       <div className="min-w-52 max-w-52 min-h-[230px] bg-red-100">
@@ -16,7 +18,7 @@ const TrainerCard = ({ trainer }) => {
         <p className=" mb-4 font-light text-gray-700">
           <strong className="font-semibold"> AvaiLable slots: </strong> {availableSlots}
         </p>
-        <ul className="flex space-x-4 sm:mt-0">
+        <ul className="flex space-x-4 sm:mt-0 mb-2">
           <li>
             <a href="#" className="text-gray-500 hover:text-gray-900">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -58,6 +60,9 @@ const TrainerCard = ({ trainer }) => {
             </a>
           </li>
         </ul>
+        <Link to={`/trainers/${_id}`} className="font-semibold  underline text-sm text-gray-500 hover:text-gray-800 cursor-pointer">
+          Know More
+        </Link>
       </div>
     </div>
   );
