@@ -33,6 +33,7 @@ const AllClasses = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    setCurrentPage(1);
     setSearch(e.target.search.value);
     // setSearch(searchText);
     e.target.reset();

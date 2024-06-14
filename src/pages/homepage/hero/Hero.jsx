@@ -9,6 +9,7 @@ import './hero.css';
 // import required modules
 import { EffectFade, Pagination, Autoplay } from 'swiper/modules';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -39,9 +40,11 @@ const Hero = () => {
               <span className="text-orange-600">VELOX</span> <br /> Where Fitness Meets Progress
             </h2>
             <p className="text-center text-white text-2xl font-medium mt-6">Velox helps you unlock a healthier, happier you, one step at a time</p>
-            <Button size="lg" className="mt-6 text-lg py-6">
-              Explore Classes
-            </Button>
+            <Link to="/all-classes">
+              <Button size="lg" className="mt-6 text-lg py-6">
+                Explore Classes
+              </Button>
+            </Link>
           </div>
         </div>
       </SwiperSlide>
