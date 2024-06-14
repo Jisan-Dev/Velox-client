@@ -1,5 +1,6 @@
 import ClassCard from '@/components/ClassCard';
 import SectionHeader from '@/components/SectionHeader';
+import { Button } from '@/components/ui/button';
 import axiosPublic from '@/hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
@@ -8,17 +9,19 @@ import { Helmet } from 'react-helmet-async';
 const AllClasses = () => {
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState('');
+
   const { data: classes } = useQuery({
-    queryKey: ['classes', currentPage],
+    queryKey: ['classes', currentPage, search],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/classes?page=${currentPage}&size=${itemsPerPage}`);
+      const { data } = await axiosPublic.get(`/classes?page=${currentPage}&size=${itemsPerPage}&search=${search}`);
       return data;
     },
   });
   const { data: count = 0 } = useQuery({
-    queryKey: ['classes-count'],
+    queryKey: ['classes-count', search],
     queryFn: async () => {
-      const { data } = await axiosPublic.get('/classes-count');
+      const { data } = await axiosPublic.get(`/classes-count?search=${search}`);
       return data.count;
     },
   });
@@ -28,6 +31,15 @@ const AllClasses = () => {
   const numberOfPages = Math.ceil(count / itemsPerPage);
   const pages = [...Array(numberOfPages).keys()].map((element) => element + 1);
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearch(e.target.search.value);
+    // setSearch(searchText);
+    e.target.reset();
+  };
+
+  console.log(search);
+
   return (
     <>
       <Helmet>
@@ -35,6 +47,25 @@ const AllClasses = () => {
       </Helmet>
       <div className="container mx-auto py-20">
         <SectionHeader heading={'All Classes'} subHeading={'See through various kind of classes does our trainers usually conduct'} />
+
+        <div className="flex items-center justify-center my-6">
+          <form onSubmit={handleSearch}>
+            <div className="flex p-1 overflow-hidden border rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-orange-400 focus-within:ring-orange-300">
+              <input
+                className="py-2 w-80 px-3 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
+                type="text"
+                name="search"
+                // onChange={(e) => setSearchText(e.target.value)}
+                // value={searchText}
+                placeholder="Enter class name"
+                aria-label="Enter class name"
+              />
+
+              <Button>Search</Button>
+            </div>
+          </form>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-10">
           {classes?.map((c) => (
             <ClassCard key={c?._id} classObj={c} />
