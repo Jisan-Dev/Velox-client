@@ -26,7 +26,7 @@ const FeaturedServices = () => {
                     </svg>
                   </div>
                   <h3 className="text-2xl leading-tight mb-2 font-semibold text-black ">{service.title}</h3>
-                  <p className="text-gray-500 text-lg">{service.description}</p>
+                  <p className="text-neutral-800 text-lg">{service.description}</p>
                 </div>
                 {/* end service block */}
               </div>

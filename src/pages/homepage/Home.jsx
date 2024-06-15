@@ -3,6 +3,7 @@ import Hero from './hero/Hero';
 import FeaturedServices from './featured-services/FeaturedServices';
 import AboutUs from './about-us/AboutUs';
 import Newsletter from '@/components/Newsletter';
+import Team from './team/Team';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <FeaturedServices />
       <AboutUs />
       <Newsletter />
+      <Team />
     </div>
   );
 };
