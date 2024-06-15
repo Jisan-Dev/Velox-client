@@ -12,7 +12,6 @@ const FeaturedServices = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className={``}
                 data-wow-duration="1s"
                 data-wow-delay={`${index * 0.1}s`}
                 style={{ visibility: 'visible', animationDuration: '1s', animationName: 'fadeInUp' }}>

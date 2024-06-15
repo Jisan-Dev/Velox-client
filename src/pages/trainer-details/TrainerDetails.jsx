@@ -32,6 +32,15 @@ const TrainerDetails = () => {
               <p className="text-lg font-medium">
                 {slot.day} {slot['time-duration']}{' '}
               </p>
+              <p>
+                <span className="font-medium">Classes:</span>
+                {slot.classNames.map((name, i) => (
+                  <span className="font-semibold" key={i}>
+                    {name}
+                    {slot.classNames.length - 1 !== i && ','}
+                  </span>
+                ))}{' '}
+              </p>
             </div>
           ))}
         </div>
