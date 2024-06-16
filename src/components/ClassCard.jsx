@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ClassCard = ({ classObj }) => {
   return (
@@ -18,9 +19,13 @@ const ClassCard = ({ classObj }) => {
 
           <div className="trainers mt-4">
             <h3 className="text-lg font-medium text-neutral-800 mb-2">Trainers who took this class</h3>
-            <a href="#" className="relative inline-flex items-center justify-center w-12 h-12 text-white rounded-full">
-              <img src="https://i.pravatar.cc/48?img=24" alt="user name" title="user name" className="max-w-full rounded-full" />
-            </a>
+            {classObj.trainers.map((trainer) => (
+              <Link to={`/trainers/${trainer.trainerObjId}`} key={trainer.trainerObjId}>
+                <span title={trainer.name} className="relative inline-flex items-center justify-center  text-white rounded-full">
+                  <img src={trainer.image} alt="trainer name" className="w-12 h-12 rounded-full object-cover object-top mr-2" />
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
