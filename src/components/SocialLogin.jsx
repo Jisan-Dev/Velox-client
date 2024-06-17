@@ -14,7 +14,7 @@ const SocialLogin = () => {
   const googleSignIn = async () => {
     try {
       const { user } = await signInWithGoogle();
-      const userInfo = { name: user.displayName, email: user.email, photo: user.photoURL };
+      const userInfo = { name: user.displayName, email: user.email, photo: user.photoURL, role: 'member' };
       await axiosPublic.post('/users', userInfo);
       toast.success('logged in successfully', {
         style: {

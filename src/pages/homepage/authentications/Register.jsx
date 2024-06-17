@@ -40,7 +40,7 @@ const Register = () => {
       console.log('user from reg page', user);
       await updateUserProfile(data.name, data.photo);
       setUser({ ...user, photoURL: data.photo, displayName: data.name });
-      const userInfo = { name: data.name, email: data.email, photo: data.photo };
+      const userInfo = { name: data.name, email: data.email, photo: data.photo, role: 'member' };
       const { data: res } = await axiosPublic.post('/users', userInfo);
       if (res.insertedId) {
         toast.success('Registered successfully', {
