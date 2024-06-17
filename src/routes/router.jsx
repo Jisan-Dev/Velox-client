@@ -7,6 +7,7 @@ import AllClasses from '@/pages/all-classes/AllClasses';
 import AllTrainers from '@/pages/all-trainers/AllTrainers';
 import TrainerDetails from '@/pages/trainer-details/TrainerDetails';
 import axiosPublic from '@/hooks/useAxiosPublic';
+import TrainerBooking from '@/pages/trainer-booking/TrainerBooking';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
         path: '/trainers/:id',
         element: <TrainerDetails />,
         loader: ({ params }) => axiosPublic.get(`/trainers/${params.id}`),
+      },
+      {
+        path: '/trainer-booking/:id',
+        element: <TrainerBooking />,
+        loader: ({ params }) => axiosPublic.get(`/trainer-booking/${params.id}`),
       },
     ],
   },

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import img from '../../assets/images/hero2.jpg';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const TrainerDetails = () => {
   const { data } = useLoaderData();
@@ -26,22 +26,24 @@ const TrainerDetails = () => {
         <div className="flex-1">
           <h1 className="text-4xl text-gray-900 font-semibold mb-6">Available Slots: {data.availableSlots} </h1>
 
-          {data.availableSlotsDetails.map((slot, i) => (
-            <div key={i} className="text-white bg-orange-600 px-10 py-6 rounded-2xl mb-4 cursor-pointer hover:scale-95 transition-all">
-              <h3 className="text-xl font-semibold">{slot.slotName}</h3>
-              <p className="text-lg font-medium">
-                {slot.day} {slot['time-duration']}{' '}
-              </p>
-              <p>
-                <span className="font-medium">Classes:</span>
-                {slot.classNames.map((name, i) => (
-                  <span className="font-semibold" key={i}>
-                    {name}
-                    {slot.classNames.length - 1 !== i && ','}
-                  </span>
-                ))}{' '}
-              </p>
-            </div>
+          {data.availableSlotsDetails.map((slot) => (
+            <Link to={`/trainer-booking/${slot._id}`} key={slot._id}>
+              <div className="text-white bg-orange-600 px-10 py-6 rounded-2xl mb-4 cursor-pointer hover:scale-95 transition-all">
+                <h3 className="text-xl font-semibold">{slot.slotName}</h3>
+                <p className="text-lg font-medium">
+                  {slot.day} {slot['time-duration']}{' '}
+                </p>
+                <p>
+                  <span className="font-medium">Classes:</span>
+                  {slot.classNames.map((name, i) => (
+                    <span className="font-semibold" key={i}>
+                      {name}
+                      {slot.classNames.length - 1 !== i && ','}
+                    </span>
+                  ))}{' '}
+                </p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
