@@ -32,7 +32,7 @@ const TrainerBooking = () => {
       };
       try {
         await axiosPublic.post('/addToCart', cartItem);
-        navigate('/');
+        navigate('/payment');
       } catch (error) {
         console.log(error);
       }
@@ -194,7 +194,9 @@ const TrainerBooking = () => {
               </li>
             </ul>
 
-            <button className="mt-8 block rounded-full border border-orange-600 bg-orange-600 px-12 py-3 text-center text-sm font-medium text-white hover:bg-orange-700 hover:ring-1 hover:ring-orange-700 focus:outline-none focus:ring active:text-orange-500 w-full">
+            <button
+              onClick={() => addToCart('Standard Membership', 50)}
+              className="mt-8 block rounded-full border border-orange-600 bg-orange-600 px-12 py-3 text-center text-sm font-medium text-white hover:bg-orange-700 hover:ring-1 hover:ring-orange-700 focus:outline-none focus:ring active:text-orange-500 w-full">
               Get Started
             </button>
           </div>
@@ -258,7 +260,9 @@ const TrainerBooking = () => {
               </li>
             </ul>
 
-            <button className="mt-8 block rounded-full border border-orange-600 bg-white px-12 py-3 text-center text-sm font-medium text-orange-600 hover:ring-1 hover:ring-orange-600 focus:outline-none focus:ring active:text-orange-500 w-full">
+            <button
+              onClick={() => addToCart('Premium Membership', 100)}
+              className="mt-8 block rounded-full border border-orange-600 bg-white px-12 py-3 text-center text-sm font-medium text-orange-600 hover:ring-1 hover:ring-orange-600 focus:outline-none focus:ring active:text-orange-500 w-full">
               Get Started
             </button>
           </div>

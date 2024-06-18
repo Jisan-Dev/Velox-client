@@ -8,6 +8,7 @@ import AllTrainers from '@/pages/all-trainers/AllTrainers';
 import TrainerDetails from '@/pages/trainer-details/TrainerDetails';
 import axiosPublic from '@/hooks/useAxiosPublic';
 import TrainerBooking from '@/pages/trainer-booking/TrainerBooking';
+import Payment from '@/pages/payment/Payment';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/all-trainers',
         element: <AllTrainers />,
+      },
+      {
+        path: '/payment',
+        element: <Payment />,
       },
       {
         path: '/trainers/:id',
