@@ -1,0 +1,98 @@
+import { Button } from '@/components/ui/button';
+import useAuth from '@/hooks/useAuth';
+import axiosPublic from '@/hooks/useAxiosPublic';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import React, { useEffect, useState } from 'react';
+
+const CheckoutForm = ({ price }) => {
+  const { user } = useAuth();
+  const [error, setError] = useState('');
+  const [transactionId, setTransactionId] = useState('');
+  const [clientSecret, setClientSecret] = useState('');
+  const stripe = useStripe();
+  const elements = useElements();
+
+  useEffect(() => {
+    if (price > 0) {
+      axiosPublic.post('/create-payment-intent', { price: price }).then((res) => {
+        console.log(res.data);
+        setClientSecret(res.data.clientSecret);
+      });
+    }
+  }, [price]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!stripe || !elements) {
+      return;
+    }
+
+    const card = elements.getElement(CardElement);
+    if (card == null) {
+      return;
+    }
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: 'card',
+      card,
+    });
+
+    if (error) {
+      console.log('[error]', error);
+      setError(error.message);
+    } else {
+      console.log('[PaymentMethod]', paymentMethod);
+      setError('');
+    }
+
+    const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: card,
+        billing_details: {
+          email: user?.email || 'anonymous',
+          name: user?.name || 'anonymous',
+        },
+      },
+    });
+    if (confirmError) {
+      console.log('confirmError ', confirmError);
+    } else {
+      console.log('paymentIntent ', paymentIntent.id);
+      setTransactionId(paymentIntent.id);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <CardElement
+        className="border border-gray-400 focus:outline-none py-4 px-4 rounded-xl"
+        options={{
+          style: {
+            base: {
+              fontSize: '16px',
+              color: '#424770',
+              '::placeholder': {
+                color: '#aab7c4',
+              },
+            },
+            invalid: {
+              color: '#9e2146',
+            },
+          },
+        }}
+      />
+      {error && <p className="text-red-500">{error}</p>}
+      <Button type="submit" disabled={!stripe || !clientSecret} className="my-8 w-full uppercase">
+        Pay Now
+      </Button>
+      {transactionId && (
+        <p className="text-green-500">
+          Payment confirmed. Your transaction id is : <strong> {transactionId} </strong>
+        </p>
+      )}
+    </form>
+  );
+};
+
+export default CheckoutForm;

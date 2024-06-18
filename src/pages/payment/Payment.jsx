@@ -1,7 +1,12 @@
 import SectionHeader from '@/components/SectionHeader';
 import useAuth from '@/hooks/useAuth';
 import axiosPublic from '@/hooks/useAxiosPublic';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import { useQuery } from '@tanstack/react-query';
+import CheckoutForm from './CheckoutForm';
+
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 
 const Payment = () => {
   const { user } = useAuth();
@@ -15,14 +20,11 @@ const Payment = () => {
   return (
     <section className="pt-20 container mx-auto">
       <SectionHeader heading={'PAYMENT'} />
-      <p>
-        {data?.package} {data?.price}{' '}
-      </p>
 
       <div className="w-full max-w-5xl mx-auto p-8">
-        <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="bg-white rounded-lg shadow-lg p-6 pb-2">
           {/* <h2 className="text-lg font-medium mb-6"></h2> */}
-          <form>
+          <div>
             <div className="grid grid-cols-2 gap-6">
               <div className="col-span-2 sm:col-span-1">
                 <label htmlFor="trainer-name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -103,12 +105,12 @@ const Payment = () => {
                 />
               </div>
             </div>
-            <div className="mt-8">
-              <button type="submit" className="w-full bg-green-500 hover:bg-orange-600 text-white font-medium py-3 rounded-lg focus:outline-none">
-                Submit
-              </button>
+            <div className="mt-6">
+              <Elements stripe={stripePromise}>
+                <CheckoutForm price={data?.price} />
+              </Elements>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </section>
