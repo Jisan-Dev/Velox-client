@@ -1,8 +1,13 @@
 import SectionHeader from '@/components/SectionHeader';
+import useAuth from '@/hooks/useAuth';
+import axiosPublic from '@/hooks/useAxiosPublic';
 import { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 
 const TrainerBooking = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const [selectedSlot, setSelectedSlot] = useState({});
   const { data } = useLoaderData();
   const { id } = useParams();
@@ -11,6 +16,28 @@ const TrainerBooking = () => {
     const slot = data.availableSlotsDetails.filter((obj) => obj._id === id);
     setSelectedSlot(slot[0]);
   }, [data, id]);
+
+  const addToCart = async (plan, price) => {
+    if (user) {
+      const cartItem = {
+        trainerName: data?.trainerName,
+        selectedSlot: selectedSlot?.slotName + ',' + selectedSlot?.day + ',' + selectedSlot['time-duration'],
+        package: plan,
+        price: price,
+        classes: selectedSlot.classNames,
+        user: {
+          name: user?.displayName,
+          email: user?.email,
+        },
+      };
+      try {
+        await axiosPublic.post('/addToCart', cartItem);
+        navigate('/');
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   return (
     <section className="py-20 container mx-auto lg:px-20">
@@ -65,7 +92,7 @@ const TrainerBooking = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-indigo-700">
+                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-orange-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
 
@@ -79,7 +106,7 @@ const TrainerBooking = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-indigo-700">
+                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-orange-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
 
@@ -93,7 +120,7 @@ const TrainerBooking = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-indigo-700">
+                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-orange-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
 
@@ -101,15 +128,15 @@ const TrainerBooking = () => {
               </li>
             </ul>
 
-            <a
-              href="#"
-              className="mt-8 block rounded-full border border-indigo-600 bg-white px-12 py-3 text-center text-sm font-medium text-indigo-600 hover:ring-1 hover:ring-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
+            <button
+              onClick={() => addToCart('Basic Membership', 10)}
+              className="mt-8 block rounded-full border border-orange-600 bg-white px-12 py-3 text-center text-sm font-medium text-orange-600 hover:ring-1 hover:ring-orange-600 focus:outline-none focus:ring active:text-orange-500 w-full">
               Get Started
-            </a>
+            </button>
           </div>
 
           {/* 2 box */}
-          <div className="rounded-2xl border border-indigo-600 p-6 shadow-sm ring-1 ring-indigo-600 sm:px-8 lg:p-12">
+          <div className="rounded-2xl border border-orange-600 p-6 shadow-sm ring-1 ring-orange-600 sm:px-8 lg:p-12">
             <div className="text-center">
               <h2 className="text-lg font-medium text-gray-900">
                 Standard Membership
@@ -131,7 +158,7 @@ const TrainerBooking = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-indigo-700">
+                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-orange-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
 
@@ -145,7 +172,7 @@ const TrainerBooking = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-indigo-700">
+                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-orange-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
 
@@ -159,7 +186,7 @@ const TrainerBooking = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-indigo-700">
+                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-orange-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
 
@@ -167,11 +194,9 @@ const TrainerBooking = () => {
               </li>
             </ul>
 
-            <a
-              href="#"
-              className="mt-8 block rounded-full border border-indigo-600 bg-indigo-600 px-12 py-3 text-center text-sm font-medium text-white hover:bg-indigo-700 hover:ring-1 hover:ring-indigo-700 focus:outline-none focus:ring active:text-indigo-500">
+            <button className="mt-8 block rounded-full border border-orange-600 bg-orange-600 px-12 py-3 text-center text-sm font-medium text-white hover:bg-orange-700 hover:ring-1 hover:ring-orange-700 focus:outline-none focus:ring active:text-orange-500 w-full">
               Get Started
-            </a>
+            </button>
           </div>
 
           {/* 3 box */}
@@ -197,7 +222,7 @@ const TrainerBooking = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-indigo-700">
+                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-orange-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
 
@@ -211,7 +236,7 @@ const TrainerBooking = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-indigo-700">
+                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-orange-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
 
@@ -225,7 +250,7 @@ const TrainerBooking = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-indigo-700">
+                  className="min-w-5 min-h-5 max-w-5 max-h-5 text-orange-700">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
 
@@ -233,11 +258,9 @@ const TrainerBooking = () => {
               </li>
             </ul>
 
-            <a
-              href="#"
-              className="mt-8 block rounded-full border border-indigo-600 bg-white px-12 py-3 text-center text-sm font-medium text-indigo-600 hover:ring-1 hover:ring-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
+            <button className="mt-8 block rounded-full border border-orange-600 bg-white px-12 py-3 text-center text-sm font-medium text-orange-600 hover:ring-1 hover:ring-orange-600 focus:outline-none focus:ring active:text-orange-500 w-full">
               Get Started
-            </a>
+            </button>
           </div>
         </div>
       </div>
