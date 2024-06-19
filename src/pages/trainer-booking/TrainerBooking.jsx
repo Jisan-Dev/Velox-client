@@ -1,11 +1,13 @@
 import SectionHeader from '@/components/SectionHeader';
 import useAuth from '@/hooks/useAuth';
 import axiosPublic from '@/hooks/useAxiosPublic';
+import useAxiosSecure from '@/hooks/useAxiosSecure';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 
 const TrainerBooking = () => {
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { user } = useAuth();
   const [selectedSlot, setSelectedSlot] = useState({});
@@ -31,7 +33,7 @@ const TrainerBooking = () => {
         },
       };
       try {
-        await axiosPublic.post('/addToCart', cartItem);
+        await axiosSecure.post('/addToCart', cartItem);
         navigate('/payment');
       } catch (error) {
         console.log(error);

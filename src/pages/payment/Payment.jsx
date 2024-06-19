@@ -5,15 +5,17 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useQuery } from '@tanstack/react-query';
 import CheckoutForm from './CheckoutForm';
+import useAxiosSecure from '@/hooks/useAxiosSecure';
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 
 const Payment = () => {
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const { data } = useQuery({
     queryKey: ['cart', user?.email],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/cart/${user.email}`);
+      const { data } = await axiosSecure.get(`/cart/${user.email}`);
       return data;
     },
   });
