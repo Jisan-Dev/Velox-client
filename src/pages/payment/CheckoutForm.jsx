@@ -3,8 +3,9 @@ import useAuth from '@/hooks/useAuth';
 import axiosPublic from '@/hooks/useAxiosPublic';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price, selectedSlot }) => {
   const { user } = useAuth();
   const [error, setError] = useState('');
   const [transactionId, setTransactionId] = useState('');
@@ -60,6 +61,22 @@ const CheckoutForm = ({ price }) => {
     } else {
       console.log('paymentIntent ', paymentIntent.id);
       setTransactionId(paymentIntent.id);
+
+      // now save the payment in db
+      const payment = {
+        user: user?._id,
+        email: user?.email,
+        transactionId: paymentIntent.id,
+        date: new Date(),
+        amount: price,
+        selectedSlot,
+      };
+
+      const { data } = await axiosPublic.post(`/payment/${user?.email}`, payment);
+      console.log(data);
+      if (data?.paymentResult?.insertedId) {
+        toast.success('payment successful');
+      }
     }
   };
 

@@ -36,6 +36,8 @@ const TrainerBooking = () => {
       } catch (error) {
         console.log(error);
       }
+    } else {
+      toast.error('Please login to continue');
     }
   };
 
