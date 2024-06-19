@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Main from '../layouts/Main';
 import Home from '@/pages/homepage/Home';
-import Register from '@/pages/homepage/authentications/Register';
-import Login from '@/pages/homepage/authentications/Login';
+import Register from '@/pages/authentications/Register';
+import Login from '@/pages/authentications/Login';
 import AllClasses from '@/pages/all-classes/AllClasses';
 import AllTrainers from '@/pages/all-trainers/AllTrainers';
 import TrainerDetails from '@/pages/trainer-details/TrainerDetails';
