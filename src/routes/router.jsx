@@ -9,6 +9,7 @@ import TrainerDetails from '@/pages/trainer-details/TrainerDetails';
 import axiosPublic from '@/hooks/useAxiosPublic';
 import TrainerBooking from '@/pages/trainer-booking/TrainerBooking';
 import Payment from '@/pages/payment/Payment';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/trainer-booking/:id',
-        element: <TrainerBooking />,
+        element: (
+          <PrivateRoute>
+            <TrainerBooking />
+          </PrivateRoute>
+        ),
         loader: ({ params }) => axiosPublic.get(`/trainer-booking/${params.id}`),
       },
     ],
