@@ -10,6 +10,7 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth';
+import axiosPublic from '@/hooks/useAxiosPublic';
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -49,11 +50,19 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         setUser(currentUser);
         console.log('CurrentUser-->', currentUser);
+        const userInfo = { email: currentUser.email };
+        axiosPublic.post('/jwt', userInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem('access-token', res.data.token);
+            setLoading(false);
+          }
+        });
       } else {
         setUser(null);
+        localStorage.removeItem('access-token');
         console.log('CurrentUser-->', currentUser);
+        setLoading(false);
       }
-      setLoading(false);
     });
 
     return () => {
