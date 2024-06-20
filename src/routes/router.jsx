@@ -11,6 +11,7 @@ import TrainerBooking from '@/pages/trainer-booking/TrainerBooking';
 import Payment from '@/pages/payment/Payment';
 import PrivateRoute from './PrivateRoute';
 import ErrorPage from '@/pages/ErrorPage';
+import DashboardLayout from '@/layouts/DashboardLayout';
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
         loader: ({ params }) => axiosPublic.get(`/trainer-booking/${params.id}`),
       },
     ],
+  },
+  {
+    path: '/dashboard',
+    element: <DashboardLayout />,
   },
 ]);
 
