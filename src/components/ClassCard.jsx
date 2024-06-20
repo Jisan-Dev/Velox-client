@@ -27,6 +27,12 @@ const ClassCard = ({ classObj }) => {
               </Link>
             ))}
           </div>
+
+          <div>
+            <p className="text-sm mt-3 ">
+              <span className="font-semibold">Total Bookings:</span> <span className="font-bold"> {classObj.booking_count} </span>
+            </p>
+          </div>
         </div>
       </div>
       {/*<!-- End Horizontal card--> */}

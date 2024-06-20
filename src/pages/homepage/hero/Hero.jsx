@@ -21,7 +21,7 @@ const Hero = () => {
       autoplay={{ delay: 3500, disableOnInteraction: false }}
       className="mySwiper h-screen">
       <SwiperSlide>
-        <div className="bg-[url(./src/assets/images/hero1.jpg)] h-screen bg-cover bg-center">
+        <div style={{ backgroundImage: "url('./src/assets/images/hero1.jpg')" }} className="h-screen bg-cover bg-center">
           <div className="bg-neutral-900/60 flex flex-col items-center justify-center z-50 h-full">
             <h2 className="text-[80px] leading-none text-white text-center font-bold max-w-[900px]">
               <span className="text-orange-600">VELOX</span> <br /> Where Fitness Meets Progress
@@ -34,7 +34,7 @@ const Hero = () => {
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className="bg-[url(./src/assets/images/hero2.jpg)] h-screen bg-cover">
+        <div style={{ backgroundImage: "url('./src/assets/images/hero2.jpg')" }} className="h-screen bg-cover">
           <div className="bg-neutral-900/60 flex flex-col items-center justify-center z-50 h-full">
             <h2 className="text-[80px] leading-none text-white text-center font-bold max-w-[900px]">
               <span className="text-orange-600">VELOX</span> <br /> Where Fitness Meets Progress
