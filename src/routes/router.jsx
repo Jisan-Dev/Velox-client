@@ -10,11 +10,13 @@ import axiosPublic from '@/hooks/useAxiosPublic';
 import TrainerBooking from '@/pages/trainer-booking/TrainerBooking';
 import Payment from '@/pages/payment/Payment';
 import PrivateRoute from './PrivateRoute';
+import ErrorPage from '@/pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
