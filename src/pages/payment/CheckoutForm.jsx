@@ -5,7 +5,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-const CheckoutForm = ({ price, selectedSlot }) => {
+const CheckoutForm = ({ price, selectedSlot, classes }) => {
   const { user } = useAuth();
   const [error, setError] = useState('');
   const [transactionId, setTransactionId] = useState('');
@@ -68,6 +68,7 @@ const CheckoutForm = ({ price, selectedSlot }) => {
         email: user?.email,
         transactionId: paymentIntent.id,
         date: new Date(),
+        classes: classes,
         amount: price,
         selectedSlot,
       };

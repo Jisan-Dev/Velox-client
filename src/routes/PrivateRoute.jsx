@@ -8,7 +8,7 @@ const PrivateRoute = ({ children }) => {
 
   if (loading) {
     return (
-      <div className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center">
+      <div className="w-full min-h-screen flex items-center justify-center">
         <Spinner />
       </div>
     );
