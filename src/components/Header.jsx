@@ -55,7 +55,7 @@ const Header = () => {
             <nav
               aria-label="main navigation"
               className={`flex h-[5rem] justify-between font-medium items-center ${
-                location.pathname === '/' ? (scrollPosition ? 'text-neutral-900' : 'text-white') : 'text-neutral-900'
+                location.pathname === '/' ? (scrollPosition ? 'text-neutral-900' : 'text-white max-sm:text-black') : 'text-neutral-900'
               }`}
               role="navigation">
               {/*      <!-- Brand logo --> */}
@@ -75,11 +75,11 @@ const Header = () => {
                 aria-expanded={isToggleOpen ? 'true' : 'false'}
                 aria-label="Toggle navigation">
                 <div className="absolute left-1/2 top-1/2 w-6 -translate-x-1/2 -translate-y-1/2 transform">
-                  <span aria-hidden="true" className="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"></span>
-                  <span aria-hidden="true" className="absolute block h-0.5 w-6 transform rounded-full bg-slate-900 transition duration-300"></span>
+                  <span aria-hidden="true" className="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-orange-500 transition-all duration-300"></span>
+                  <span aria-hidden="true" className="absolute block h-0.5 w-6 transform rounded-full bg-orange-500 transition duration-300"></span>
                   <span
                     aria-hidden="true"
-                    className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"></span>
+                    className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-orange-500 transition-all duration-300"></span>
                 </div>
               </button>
               {/*      <!-- Navigation links --> */}
