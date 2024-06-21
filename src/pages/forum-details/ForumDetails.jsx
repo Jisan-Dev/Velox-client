@@ -1,15 +1,54 @@
+import useAuth from '@/hooks/useAuth';
+import axiosPublic from '@/hooks/useAxiosPublic';
+import useAxiosSecure from '@/hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
-import { useLoaderData } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useLoaderData, useParams } from 'react-router-dom';
 
 const ForumDetails = () => {
-  const { data } = useLoaderData();
+  // const { data } = useLoaderData();
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+  const { id } = useParams();
+
+  const { data = {}, refetch } = useQuery({
+    queryKey: ['forum-detail', id],
+    queryFn: async () => {
+      const { data } = await axiosPublic.get(`/forum/${id}`);
+      return data;
+    },
+  });
+
+  const upVoteHandler = async (id) => {
+    if (!user) {
+      toast.error('Please login first');
+      return;
+    }
+
+    const res = await axiosSecure.put(`/forum/${id}/upVote?email=${user?.email}`);
+    console.log(res);
+    refetch();
+  };
+  const downVoteHandler = async (id) => {
+    if (!user) {
+      toast.error('Please login first');
+      return;
+    }
+
+    const res = await axiosSecure.put(`/forum/${id}/downVote?email=${user?.email}`);
+    console.log(res);
+    refetch();
+  };
   return (
     <div className="py-40 max-w-[800px] mx-auto">
       <h1 className="text-4xl font-semibold"> {data?.title} </h1>
       <div className="flex items-center gap-4 mt-4">
-        <p className="text-xl text-slate-600">
-          By <span className="font-medium">{data?.authorName}</span>, <span className="text-lg">{format(new Date(data?.createdAt), 'MMMdd yyyy')}</span>
-        </p>
+        {data?.createdAt && (
+          <p className="text-xl text-slate-600">
+            By <span className="font-medium">{data?.authorName}</span>, <span className="text-lg">{format(data?.createdAt, 'MMMdd yyyy')}</span>
+          </p>
+        )}
         <span className="inline-flex items-center justify-center rounded-full bg-amber-100 px-2.5 py-0.5 text-amber-700">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="-ms-1 me-1.5 h-4 w-4">
             <path
@@ -26,7 +65,9 @@ const ForumDetails = () => {
       <p className="mb-6 text-lg font-medium mt-4">{data?.shortDescription}</p>
       <p className="mb-6 text-lg font-medium mt-4"> {data?.description} </p>
       <div className="flex gap-2">
-        <button className="py-1.5 px-3 hover:text-green-600 hover:scale-105 hover:shadow text-center border rounded-md border-gray-400 h-8 text-sm flex items-center gap-1 lg:gap-2">
+        <button
+          onClick={() => upVoteHandler(data?._id)}
+          className="py-1.5 px-3 hover:text-green-600 hover:scale-105 hover:shadow text-center border rounded-md border-gray-400 h-8 text-sm flex items-center gap-1 lg:gap-2">
           <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
             <path
               strokeLinecap="round"
@@ -36,7 +77,9 @@ const ForumDetails = () => {
           <span>{data?.upVotes}</span>
         </button>
 
-        <button className="py-1.5 px-3 hover:text-red-600 hover:scale-105 hover:shadow text-center border rounded-md border-gray-400 h-8 text-sm flex items-center gap-1 lg:gap-2">
+        <button
+          onClick={() => downVoteHandler(data?._id)}
+          className="py-1.5 px-3 hover:text-red-600 hover:scale-105 hover:shadow text-center border rounded-md border-gray-400 h-8 text-sm flex items-center gap-1 lg:gap-2">
           <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
             <path
               strokeLinecap="round"

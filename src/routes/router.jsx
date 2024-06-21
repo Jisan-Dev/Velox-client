@@ -47,7 +47,7 @@ const router = createBrowserRouter([
       {
         path: '/forum/:id',
         element: <ForumDetails />,
-        loader: ({ params }) => axiosPublic.get(`/forum/${params.id}`),
+        // loader: ({ params }) => axiosPublic.get(`/forum/${params.id}`),
       },
       {
         path: '/trainers/:id',
