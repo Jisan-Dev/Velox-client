@@ -19,6 +19,16 @@ const ForumCard = ({ data, refetch }) => {
     console.log(res);
     refetch();
   };
+  const downVoteHandler = async (id) => {
+    if (!user) {
+      toast.error('Please login first');
+      return;
+    }
+
+    const res = await axiosSecure.put(`/forum/${id}/downVote?email=${user?.email}`);
+    console.log(res);
+    refetch();
+  };
   return (
     <>
       {/*<!-- Component: Card with subtitle --> */}
@@ -65,7 +75,9 @@ const ForumCard = ({ data, refetch }) => {
                 <span>{data?.upVotes}</span>
               </button>
 
-              <button className="py-1.5 px-3 hover:text-red-600 hover:scale-105 hover:shadow text-center border rounded-md border-gray-400 h-8 text-sm flex items-center gap-1 lg:gap-2">
+              <button
+                onClick={() => downVoteHandler(data?._id)}
+                className="py-1.5 px-3 hover:text-red-600 hover:scale-105 hover:shadow text-center border rounded-md border-gray-400 h-8 text-sm flex items-center gap-1 lg:gap-2">
                 <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                   <path
                     strokeLinecap="round"
