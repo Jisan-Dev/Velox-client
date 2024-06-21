@@ -55,7 +55,7 @@ const Header = () => {
             <nav
               aria-label="main navigation"
               className={`flex h-[5rem] justify-between font-medium items-center ${
-                location.pathname === '/' ? (scrollPosition ? 'text-neutral-900' : 'text-white max-sm:text-black') : 'text-neutral-900'
+                location.pathname === '/' ? (scrollPosition ? 'text-neutral-900' : 'text-white max-lg:text-black') : 'text-neutral-900'
               }`}
               role="navigation">
               {/*      <!-- Brand logo --> */}

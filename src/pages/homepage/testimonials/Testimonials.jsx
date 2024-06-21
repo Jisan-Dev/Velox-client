@@ -26,12 +26,26 @@ const Testimonials = () => {
       />
 
       <Swiper
-        slidesPerView={3}
+        slidesPerView={1}
         spaceBetween={30}
         pagination={{
           clickable: true,
         }}
         modules={[Pagination]}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1124: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        }}
         className="mySwiper mb-20">
         {testimonials?.map((testimonial) => (
           <SwiperSlide className="pb-10 cursor-grab active:cursor-grabbing" key={testimonial._id}>

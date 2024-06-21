@@ -23,7 +23,7 @@ const Hero = () => {
       <SwiperSlide>
         <div style={{ backgroundImage: "url('./src/assets/images/hero1.jpg')" }} className="h-screen bg-cover bg-center">
           <div className="bg-neutral-900/60 flex flex-col items-center justify-center z-50 h-full">
-            <h2 className="text-[80px] leading-none text-white text-center font-bold max-w-[900px]">
+            <h2 className="text-[80px] max-sm:text-[50px] leading-none text-white text-center font-bold max-w-[900px]">
               <span className="text-orange-600">VELOX</span> <br /> Where Fitness Meets Progress
             </h2>
             <p className="text-center text-white text-2xl font-medium mt-6">Velox helps you unlock a healthier, happier you, one step at a time</p>
@@ -36,7 +36,7 @@ const Hero = () => {
       <SwiperSlide>
         <div style={{ backgroundImage: "url('./src/assets/images/hero2.jpg')" }} className="h-screen bg-cover">
           <div className="bg-neutral-900/60 flex flex-col items-center justify-center z-50 h-full">
-            <h2 className="text-[80px] leading-none text-white text-center font-bold max-w-[900px]">
+            <h2 className="text-[80px] max-sm:text-[50px] leading-none text-white text-center font-bold max-w-[900px]">
               <span className="text-orange-600">VELOX</span> <br /> Where Fitness Meets Progress
             </h2>
             <p className="text-center text-white text-2xl font-medium mt-6">Velox helps you unlock a healthier, happier you, one step at a time</p>
