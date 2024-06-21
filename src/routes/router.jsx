@@ -13,6 +13,7 @@ import PrivateRoute from './PrivateRoute';
 import ErrorPage from '@/pages/ErrorPage';
 import DashboardLayout from '@/layouts/DashboardLayout';
 import ForumDetails from '@/pages/forum-details/ForumDetails';
+import Profile from '@/pages/profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />,
+      },
+      {
+        path: '/profile',
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
       {
         path: '/all-classes',
