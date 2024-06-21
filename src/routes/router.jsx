@@ -14,6 +14,7 @@ import ErrorPage from '@/pages/ErrorPage';
 import DashboardLayout from '@/layouts/DashboardLayout';
 import ForumDetails from '@/pages/forum-details/ForumDetails';
 import Profile from '@/pages/profile/Profile';
+import BeATrainer from '@/pages/be-trainer/BeATrainer';
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => axiosPublic.get(`/trainer-booking/${params.id}`),
+      },
+      {
+        path: '/be-a-trainer',
+        element: (
+          <PrivateRoute>
+            <BeATrainer />
+          </PrivateRoute>
+        ),
       },
     ],
   },
