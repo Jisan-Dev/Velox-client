@@ -6,6 +6,7 @@ import Newsletter from '@/components/Newsletter';
 import Team from './team/Team';
 import Testimonials from './testimonials/Testimonials';
 import FeaturedClasses from './featured-classes/FeaturedClasses';
+import Forum from './forum/Forum';
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <AboutUs />
       <FeaturedClasses />
       <Testimonials />
+      <Forum />
       <Newsletter />
       <Team />
     </div>
