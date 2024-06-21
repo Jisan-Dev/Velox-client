@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import useAuth from '@/hooks/useAuth';
+import { ProfileModal } from '@/components/ProfileModal';
 
 const Profile = () => {
   const { user, loading } = useAuth() || {};
@@ -33,7 +34,7 @@ const Profile = () => {
               </p>
 
               <div>
-                <button className="bg-orange-500 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-orange-600 block mb-1">Update Profile</button>
+                <ProfileModal />
                 <button className="bg-orange-500 px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-orange-600">Change Password</button>
               </div>
             </div>
