@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const Forum = () => {
-  const { data = [] } = useQuery({
+  const { data = [], refetch } = useQuery({
     queryKey: ['forum'],
     queryFn: async () => {
       const { data } = await axiosPublic.get(`/forum?sort=${'dsc'}&size=${6}`);
@@ -18,7 +18,7 @@ const Forum = () => {
 
       <div className="grid md:grid-cols-3 gap-6">
         {data.map((post) => (
-          <ForumCard key={post._id} data={post} />
+          <ForumCard key={post._id} data={post} refetch={refetch} />
         ))}
       </div>
     </section>

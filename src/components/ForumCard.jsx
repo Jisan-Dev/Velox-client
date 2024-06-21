@@ -1,8 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
+import useAuth from '@/hooks/useAuth';
+import useAxiosSecure from '@/hooks/useAxiosSecure';
+import toast from 'react-hot-toast';
 
-const ForumCard = ({ data }) => {
+const ForumCard = ({ data, refetch }) => {
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+
+  const upVoteHandler = async (id) => {
+    if (!user) {
+      toast.error('Please login first');
+      return;
+    }
+
+    const res = await axiosSecure.put(`/forum/${id}/upVote?email=${user?.email}`);
+    console.log(res);
+    refetch();
+  };
   return (
     <>
       {/*<!-- Component: Card with subtitle --> */}
@@ -37,7 +53,9 @@ const ForumCard = ({ data }) => {
             </Link>
 
             <div className="flex gap-2">
-              <button className="py-1.5 px-3 hover:text-green-600 hover:scale-105 hover:shadow text-center border rounded-md border-gray-400 h-8 text-sm flex items-center gap-1 lg:gap-2">
+              <button
+                onClick={() => upVoteHandler(data?._id)}
+                className="py-1.5 px-3 hover:text-green-600 hover:scale-105 hover:shadow text-center border rounded-md border-gray-400 h-8 text-sm flex items-center gap-1 lg:gap-2">
                 <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                   <path
                     strokeLinecap="round"
