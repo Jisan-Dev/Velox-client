@@ -29,7 +29,7 @@ const ForumCard = ({ data }) => {
             <p className="mt-4">{data?.shortDescription}</p>
           </header>
           <div className="flex items-center justify-between">
-            <Link to={`/forums/${data?._id}`} className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+            <Link to={`/forum/${data?._id}`} className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
               Find out more
               <span aria-hidden="true" className="block transition-all group-hover:ms-0.5 rtl:rotate-180">
                 &rarr;

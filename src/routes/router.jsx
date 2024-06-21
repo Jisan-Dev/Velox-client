@@ -12,6 +12,7 @@ import Payment from '@/pages/payment/Payment';
 import PrivateRoute from './PrivateRoute';
 import ErrorPage from '@/pages/ErrorPage';
 import DashboardLayout from '@/layouts/DashboardLayout';
+import ForumDetails from '@/pages/forum-details/ForumDetails';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
       {
         path: '/payment',
         element: <Payment />,
+      },
+      {
+        path: '/forum/:id',
+        element: <ForumDetails />,
+        loader: ({ params }) => axiosPublic.get(`/forum/${params.id}`),
       },
       {
         path: '/trainers/:id',
