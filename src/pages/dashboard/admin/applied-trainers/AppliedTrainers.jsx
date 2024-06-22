@@ -6,7 +6,7 @@ import AppliedTrainerRow from './AppliedTrainerRow';
 
 const AppliedTrainers = () => {
   const axiosSecure = useAxiosSecure();
-  const { data = [] } = useQuery({
+  const { data = [], refetch: trainerRefetch } = useQuery({
     queryKey: ['applied-trainers'],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/applied-trainers`);
@@ -33,6 +33,9 @@ const AppliedTrainers = () => {
                       Email
                     </th>
                     <th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-medium">
+                      Role
+                    </th>
+                    <th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-medium">
                       Status
                     </th>
                     <th scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-medium">
@@ -42,7 +45,7 @@ const AppliedTrainers = () => {
                 </thead>
                 <tbody>
                   {data.map((applicant) => (
-                    <AppliedTrainerRow key={applicant?._id} user={applicant} />
+                    <AppliedTrainerRow key={applicant?._id} user={applicant} trainerRefetch={trainerRefetch} />
                   ))}
                 </tbody>
               </table>
