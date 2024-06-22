@@ -21,6 +21,10 @@ import ManageSlots from '@/pages/dashboard/trainer/manage-slots/ManageSlots';
 import AddSlot from '@/pages/dashboard/trainer/add-slot/AddSlot';
 import Subscribers from '@/pages/dashboard/admin/Subscribers';
 import AppliedTrainers from '@/pages/dashboard/admin/applied-trainers/AppliedTrainers';
+import AdminRoute from './AdminRoute';
+import MemberRoute from './MemberRoute';
+import Welcome from '@/pages/dashboard/common/Welcome';
+import TrainerRoute from './TrainerRoute';
 
 const router = createBrowserRouter([
   {
@@ -91,11 +95,29 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
-        element: <ActivityLog />,
+        element: (
+          <PrivateRoute>
+            <Welcome />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/dashboard/activity-log',
+        element: (
+          <PrivateRoute>
+            <MemberRoute>
+              <ActivityLog />
+            </MemberRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/dashboard/profile',
@@ -103,23 +125,54 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/booked-trainers',
-        element: <BookedTrainers />,
+        element: (
+          <PrivateRoute>
+            <MemberRoute>
+              <BookedTrainers />
+            </MemberRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/dashboard/manage-slots',
-        element: <ManageSlots />,
+        element: (
+          <PrivateRoute>
+            <TrainerRoute>
+              <ManageSlots />
+            </TrainerRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/dashboard/add-slot',
-        element: <AddSlot />,
+        element: (
+          <PrivateRoute>
+            <TrainerRoute>
+              <AddSlot />
+            </TrainerRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/dashboard/subscribers',
-        element: <Subscribers />,
+        // index: true,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <Subscribers />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/dashboard/applied-trainers',
-        element: <AppliedTrainers />,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AppliedTrainers />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
     ],
   },
