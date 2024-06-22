@@ -13,6 +13,7 @@ import logo from '../../../assets/images/logovelox.png';
 import useRole from '@/hooks/useRole';
 import MenuItem from './menu/MenuItem';
 import MemberMenu from './menu/MemberMenu';
+import TrainerMenu from './menu/TrainerMenu';
 
 const Sidebar = () => {
   const { logOut } = useAuth();
@@ -70,37 +71,9 @@ const Sidebar = () => {
 
           {/* Nav Items */}
           <div className="flex flex-col justify-between flex-1 mt-6">
-            {/* Conditional toggle button here.. */}
-
             {/*  Menu Items */}
-            <nav>
-              {role === 'member' && <MemberMenu />}
-
-              {/* Add Room */}
-              <NavLink
-                to="add-room"
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-orange-300   hover:text-orange-700 ${
-                    isActive ? 'bg-orange-300  text-orange-700' : 'text-orange-600'
-                  }`
-                }>
-                <BsFillHouseAddFill className="w-5 h-5" />
-
-                <span className="mx-4 font-medium">Add Room</span>
-              </NavLink>
-              {/* My Listing */}
-              <NavLink
-                to="my-listings"
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-orange-300   hover:text-orange-700 ${
-                    isActive ? 'bg-orange-300  text-orange-700' : 'text-orange-600'
-                  }`
-                }>
-                <MdHomeWork className="w-5 h-5" />
-
-                <span className="mx-4 font-medium">My Listings</span>
-              </NavLink>
-            </nav>
+            <nav>{role === 'member' && <MemberMenu />}</nav>
+            <nav>{role === 'member' && <TrainerMenu />}</nav>
           </div>
         </div>
 

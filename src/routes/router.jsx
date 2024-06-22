@@ -17,6 +17,7 @@ import Profile from '@/pages/profile/Profile';
 import BeATrainer from '@/pages/be-trainer/BeATrainer';
 import ActivityLog from '@/pages/dashboard/member/activity-log/ActivityLog';
 import BookedTrainers from '@/pages/dashboard/member/booked=trainers/BookedTrainers';
+import ManageSlots from '@/pages/dashboard/trainer/manage-slots/ManageSlots';
 
 const router = createBrowserRouter([
   {
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/booked-trainers',
         element: <BookedTrainers />,
+      },
+      {
+        path: '/dashboard/manage-slots',
+        element: <ManageSlots />,
       },
     ],
   },
