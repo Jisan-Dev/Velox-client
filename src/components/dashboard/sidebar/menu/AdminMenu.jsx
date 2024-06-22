@@ -8,6 +8,7 @@ const AdminMenu = () => {
   return (
     <>
       <MenuItem address="/dashboard/subscribers" icon={RxActivityLog} label="Subscribers" />
+      <MenuItem address="/dashboard/applied-trainers" icon={RxActivityLog} label="Applied Trainers" />
     </>
   );
 };

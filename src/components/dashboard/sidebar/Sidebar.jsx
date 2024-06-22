@@ -74,8 +74,8 @@ const Sidebar = () => {
           <div className="flex flex-col justify-between flex-1 mt-6">
             {/*  Menu Items */}
             <nav>{role === 'member' && <MemberMenu />}</nav>
-            <nav>{role === 'member' && <TrainerMenu />}</nav>
-            <nav>{role === 'member' && <AdminMenu />}</nav>
+            <nav>{role === 'trainer' && <TrainerMenu />}</nav>
+            <nav>{role === 'admin' && <AdminMenu />}</nav>
           </div>
         </div>
 

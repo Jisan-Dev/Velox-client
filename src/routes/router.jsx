@@ -20,6 +20,7 @@ import BookedTrainers from '@/pages/dashboard/member/booked=trainers/BookedTrain
 import ManageSlots from '@/pages/dashboard/trainer/manage-slots/ManageSlots';
 import AddSlot from '@/pages/dashboard/trainer/add-slot/AddSlot';
 import Subscribers from '@/pages/dashboard/admin/Subscribers';
+import AppliedTrainers from '@/pages/dashboard/admin/applied-trainers/AppliedTrainers';
 
 const router = createBrowserRouter([
   {
@@ -115,6 +116,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/subscribers',
         element: <Subscribers />,
+      },
+      {
+        path: '/dashboard/applied-trainers',
+        element: <AppliedTrainers />,
       },
     ],
   },
