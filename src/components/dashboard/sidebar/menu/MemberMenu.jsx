@@ -9,6 +9,7 @@ const MemberMenu = () => {
     <>
       <MenuItem address="/dashboard" icon={RxActivityLog} label="Activity Log" />
       <MenuItem address="/dashboard/profile" icon={MdAdminPanelSettings} label="Profile" />
+      <MenuItem address="/dashboard/booked-trainers" icon={MdAdminPanelSettings} label="Booked Trainers" />
     </>
   );
 };

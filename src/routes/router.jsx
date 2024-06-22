@@ -15,7 +15,8 @@ import DashboardLayout from '@/layouts/DashboardLayout';
 import ForumDetails from '@/pages/forum-details/ForumDetails';
 import Profile from '@/pages/profile/Profile';
 import BeATrainer from '@/pages/be-trainer/BeATrainer';
-import ActivityLog from '@/components/dashboard/member/activity-log/ActivityLog';
+import ActivityLog from '@/pages/dashboard/member/activity-log/ActivityLog';
+import BookedTrainers from '@/pages/dashboard/member/booked=trainers/BookedTrainers';
 
 const router = createBrowserRouter([
   {
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/profile',
         element: <Profile />,
+      },
+      {
+        path: '/dashboard/booked-trainers',
+        element: <BookedTrainers />,
       },
     ],
   },

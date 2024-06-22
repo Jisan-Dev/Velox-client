@@ -22,6 +22,7 @@ const TrainerBooking = () => {
   const addToCart = async (plan, price) => {
     if (user) {
       const cartItem = {
+        trainerId: data?._id,
         trainerName: data?.trainerName,
         selectedSlot: selectedSlot?.slotName + ',' + selectedSlot?.day + ',' + selectedSlot['time-duration'],
         package: plan,

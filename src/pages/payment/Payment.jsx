@@ -109,8 +109,9 @@ const Payment = () => {
             </div>
             <div className="mt-6">
               <Elements stripe={stripePromise}>
-                <CheckoutForm price={data?.price} selectedSlot={data?.selectedSlot} classes={data?.classes} />
+                <CheckoutForm price={data?.price} selectedSlot={data?.selectedSlot} classes={data?.classes} trainerId={data?.trainerId} />
               </Elements>
+              bookedTrainerId
             </div>
           </div>
         </div>
