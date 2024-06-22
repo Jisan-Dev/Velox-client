@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosPublic = axios.create({
-  baseURL: 'https://vercel.com/jisans-projects/a12-velox-server',
+  baseURL: 'https://a12-velox-server.vercel.app',
 });
 
 export default axiosPublic;
