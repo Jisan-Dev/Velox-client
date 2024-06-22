@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/logovelox.png';
 import useRole from '@/hooks/useRole';
 import MenuItem from './menu/MenuItem';
+import MemberMenu from './menu/MemberMenu';
 
 const Sidebar = () => {
   const { logOut } = useAuth();
@@ -73,8 +74,7 @@ const Sidebar = () => {
 
             {/*  Menu Items */}
             <nav>
-              {/* Statistics */}
-              <MenuItem address="/dashboard" icon={BsGraphUp} label="Statistics" />
+              {role === 'member' && <MemberMenu />}
 
               {/* Add Room */}
               <NavLink

@@ -18,7 +18,7 @@ const Hero = () => {
       pagination={{ clickable: true }}
       // loop={true}
       modules={[Pagination, Autoplay, EffectFade]}
-      autoplay={{ delay: 3500, disableOnInteraction: false }}
+      autoplay={{ delay: 4500, disableOnInteraction: false }}
       className="mySwiper h-screen">
       <SwiperSlide>
         <div style={{ backgroundImage: "url('./src/assets/images/hero1.jpg')" }} className="h-screen bg-cover bg-center">
