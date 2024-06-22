@@ -37,6 +37,8 @@ const BeATrainer = () => {
         toast.success('Your request to be a trainer is now in process');
         form.reset();
         navigate('/dashboard/activity-log');
+      } else {
+        toast.error('Your request is already in process');
       }
     } catch (err) {
       toast.error('something went wrong!');

@@ -26,6 +26,7 @@ import MemberRoute from './MemberRoute';
 import Welcome from '@/pages/dashboard/common/Welcome';
 import TrainerRoute from './TrainerRoute';
 import Trainers from '@/pages/dashboard/admin/Trainers/Trainers';
+import Community from '@/pages/community/Community';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: '/all-classes',
         element: <AllClasses />,
+      },
+      {
+        path: '/community',
+        element: <Community />,
       },
       {
         path: '/all-trainers',
