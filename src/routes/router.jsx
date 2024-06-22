@@ -15,6 +15,7 @@ import DashboardLayout from '@/layouts/DashboardLayout';
 import ForumDetails from '@/pages/forum-details/ForumDetails';
 import Profile from '@/pages/profile/Profile';
 import BeATrainer from '@/pages/be-trainer/BeATrainer';
+import ActivityLog from '@/components/dashboard/member/activity-log/ActivityLog';
 
 const router = createBrowserRouter([
   {
@@ -86,6 +87,12 @@ const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <ActivityLog />,
+      },
+    ],
   },
 ]);
 
