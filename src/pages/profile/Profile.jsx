@@ -1,10 +1,11 @@
 import { Helmet } from 'react-helmet-async';
 import useAuth from '@/hooks/useAuth';
 import { ProfileModal } from '@/components/ProfileModal';
+import useRole from '@/hooks/useRole';
 
 const Profile = () => {
   const { user, loading } = useAuth() || {};
-  // const [role, isLoading] = useRole();
+  const [role, isLoading] = useRole();
 
   console.log(user);
   // if (isLoading || loading) return <LoadingSpinner />;
@@ -20,7 +21,7 @@ const Profile = () => {
             <img alt="profile" src={user?.photoURL} className="mx-auto object-cover rounded-full h-24 w-24  border-2 border-white " />
           </a>
 
-          <p className="p-2 uppercase px-4 text-xs text-white bg-orange-500 rounded-full">role</p>
+          <p className="p-2 capitalize px-4 text-xs text-white bg-orange-500 rounded-full">{role}</p>
           <p className="mt-2 text-xl font-medium text-gray-800 ">User Id: {user?.uid}</p>
           <div className="w-full p-2 mt-4 rounded-lg">
             <div className="flex flex-wrap items-center justify-between text-sm text-gray-600 ">
