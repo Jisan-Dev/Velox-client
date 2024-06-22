@@ -25,6 +25,7 @@ import AdminRoute from './AdminRoute';
 import MemberRoute from './MemberRoute';
 import Welcome from '@/pages/dashboard/common/Welcome';
 import TrainerRoute from './TrainerRoute';
+import Trainers from '@/pages/dashboard/admin/Trainers/Trainers';
 
 const router = createBrowserRouter([
   {
@@ -170,6 +171,16 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <AdminRoute>
               <AppliedTrainers />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/dashboard/trainers',
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <Trainers />
             </AdminRoute>
           </PrivateRoute>
         ),

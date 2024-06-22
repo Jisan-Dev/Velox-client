@@ -7,7 +7,7 @@ import { MdAdminPanelSettings } from 'react-icons/md';
 const MemberMenu = () => {
   return (
     <>
-      <MenuItem address="/dashboard" icon={RxActivityLog} label="Activity Log" />
+      <MenuItem address="/dashboard/activity-log" icon={RxActivityLog} label="Activity Log" />
       <MenuItem address="/dashboard/profile" icon={MdAdminPanelSettings} label="Profile" />
       <MenuItem address="/dashboard/booked-trainers" icon={MdAdminPanelSettings} label="Booked Trainers" />
     </>

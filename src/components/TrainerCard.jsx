@@ -1,22 +1,26 @@
 import { Link } from 'react-router-dom';
 
 const TrainerCard = ({ trainer }) => {
-  const { trainerName, details, yearsOfExperience, availableSlots, profileImage, _id } = trainer || {};
+  const { trainerName, details, yearsOfExperience, availableSlots, profileImage, _id, imageUrl, name } = trainer || {};
   return (
     <div className="items-center bg-gray-50 rounded-lg shadow-xl shadow-gray-900/10 sm:flex">
       <div className="min-w-52 max-w-52 min-h-[230px] bg-red-100">
-        <img className="min-h-[230px] max-h-[230px] min-w-full rounded-lg sm:rounded-none sm:rounded-l-lg object-cover object-top" src={profileImage} alt="Bonnie Avatar" />
+        <img
+          className="min-h-[230px] max-h-[230px] min-w-full rounded-lg sm:rounded-none sm:rounded-l-lg object-cover object-top"
+          src={profileImage ?? imageUrl}
+          alt="Bonnie Avatar"
+        />
       </div>
       <div className="p-5">
         <h3 className="text-xl font-bold tracking-tight text-gray-900">
-          <a href="#"> {trainerName} </a>
+          <a href="#"> {trainerName ?? name} </a>
         </h3>
         <span className="text-gray-700">{details}</span>
         <p className="mt-3 font-light text-gray-700">
-          <strong className="font-semibold"> years of experience: </strong> {yearsOfExperience}
+          <strong className="font-semibold"> years of experience: </strong> {yearsOfExperience ?? 4}
         </p>
         <p className=" mb-4 font-light text-gray-700">
-          <strong className="font-semibold"> AvaiLable slots: </strong> {availableSlots}
+          <strong className="font-semibold"> AvaiLable slots: </strong> {availableSlots ?? 'N/A'}
         </p>
         <ul className="flex space-x-4 sm:mt-0 mb-2">
           <li>

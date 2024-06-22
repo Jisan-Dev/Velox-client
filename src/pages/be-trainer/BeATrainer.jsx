@@ -3,6 +3,7 @@ import useAuth from '@/hooks/useAuth';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 
 const options = [
@@ -18,6 +19,7 @@ const BeATrainer = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState([]);
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +36,7 @@ const BeATrainer = () => {
       if (data.insertedId) {
         toast.success('Your request to be a trainer is now in process');
         form.reset();
+        navigate('/dashboard/activity-log');
       }
     } catch (err) {
       toast.error('something went wrong!');

@@ -8,15 +8,15 @@ const TrainerDetails = () => {
   return (
     <div className="py-20 container mx-auto">
       <h1 className="mt-6 font-semibold text-5xl text-center mb-20">
-        All Details About The Trainer <br /> <span className="text-orange-600">{data.trainerName}</span>{' '}
+        All Details About The Trainer <br /> <span className="text-orange-600">{data.trainerName ?? data.name}</span>{' '}
       </h1>
       <div className="flex gap-16">
         <div className="sm:w-1/2">
-          <img src={data?.profileImage} className="h-[500px] w-[600px] object-cover object-top rounded-2xl" alt="" />
+          <img src={data?.profileImage ?? data?.imageUrl} className="h-[500px] w-[600px] object-cover object-top rounded-2xl" alt="" />
           <p className="text-2xl mt-4 max-w-[600px]"> {data.details} </p>
           <p className="mt-4 text-lg">
             <strong className="text-gray-600">Expertise in: </strong>
-            {data.expertise.map((item, i) => (
+            {data.expertise?.map((item, i) => (
               <span key={i}> {item}, </span>
             ))}{' '}
           </p>
@@ -26,7 +26,7 @@ const TrainerDetails = () => {
         <div className="flex-1">
           <h1 className="text-4xl text-gray-900 font-semibold mb-6">Available Slots: {data.availableSlots} </h1>
 
-          {data.availableSlotsDetails.map((slot) => (
+          {data.availableSlotsDetails?.map((slot) => (
             <Link to={`/trainer-booking/${slot._id}`} key={slot._id}>
               <div className="text-white bg-orange-600 px-10 py-6 rounded-2xl mb-4 cursor-pointer hover:scale-95 transition-all">
                 <h3 className="text-xl font-semibold">{slot.slotName}</h3>
@@ -35,7 +35,7 @@ const TrainerDetails = () => {
                 </p>
                 <p>
                   <span className="font-medium">Classes:</span>
-                  {slot.classNames.map((name, i) => (
+                  {slot.classNames?.map((name, i) => (
                     <span className="font-semibold" key={i}>
                       {name}
                       {slot.classNames.length - 1 !== i && ','}
