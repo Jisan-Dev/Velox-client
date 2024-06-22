@@ -10,6 +10,8 @@ import './hero.css';
 import { EffectFade, Pagination, Autoplay } from 'swiper/modules';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import hero1 from '../../../assets/images/hero1.jpg';
+import hero2 from '../../../assets/images/hero2.jpg';
 
 const Hero = () => {
   return (
@@ -21,7 +23,7 @@ const Hero = () => {
       autoplay={{ delay: 4500, disableOnInteraction: false }}
       className="mySwiper h-screen">
       <SwiperSlide>
-        <div className="h-screen bg-cover bg-center bg-[url('./src/assets/images/hero1.jpg')]">
+        <div style={{ backgroundImage: `url(${hero1})` }} className="h-screen bg-cover bg-center">
           <div className="bg-neutral-900/60 flex flex-col items-center justify-center z-50 h-full">
             <h2 className="text-[80px] max-sm:text-[50px] leading-none text-white text-center font-bold max-w-[900px]">
               <span className="text-orange-600">VELOX</span> <br /> Where Fitness Meets Progress
@@ -34,7 +36,7 @@ const Hero = () => {
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className="h-screen bg-cover bg-[url('./src/assets/images/hero2.jpg')]">
+        <div style={{ backgroundImage: `url(${hero2})` }} className="h-screen bg-cover">
           <div className="bg-neutral-900/60 flex flex-col items-center justify-center z-50 h-full">
             <h2 className="text-[80px] max-sm:text-[50px] leading-none text-white text-center font-bold max-w-[900px]">
               <span className="text-orange-600">VELOX</span> <br /> Where Fitness Meets Progress

@@ -15,6 +15,10 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        hero1: "url('./src/assets/images/hero1.jpg')",
+        hero2: "url('./src/assets/images/hero2.jpg')",
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
