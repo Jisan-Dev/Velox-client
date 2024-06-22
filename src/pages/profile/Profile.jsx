@@ -32,6 +32,10 @@ const Profile = () => {
                 Email
                 <span className="font-bold text-black ">{user?.email}</span>
               </p>
+              <p className="flex flex-col">
+                Last logged in at
+                <span className="font-bold text-black ">{new Date(user?.metadata?.lastSignInTime).toLocaleString()}</span>
+              </p>
 
               <div>
                 <ProfileModal />
