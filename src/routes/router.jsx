@@ -92,6 +92,10 @@ const router = createBrowserRouter([
         index: true,
         element: <ActivityLog />,
       },
+      {
+        path: '/dashboard/profile',
+        element: <Profile />,
+      },
     ],
   },
 ]);
