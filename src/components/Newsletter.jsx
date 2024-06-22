@@ -1,3 +1,4 @@
+import axiosPublic from '@/hooks/useAxiosPublic';
 import React from 'react';
 import Swal from 'sweetalert2';
 
@@ -12,6 +13,7 @@ const Newsletter = () => {
         text: 'Please enter your email',
       });
     } else {
+      axiosPublic.post('/subscribers', { email });
       Swal.fire({
         icon: 'success',
         title: 'Thank you for subscribing',

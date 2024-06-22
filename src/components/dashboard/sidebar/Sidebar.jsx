@@ -14,6 +14,7 @@ import useRole from '@/hooks/useRole';
 import MenuItem from './menu/MenuItem';
 import MemberMenu from './menu/MemberMenu';
 import TrainerMenu from './menu/TrainerMenu';
+import AdminMenu from './menu/AdminMenu';
 
 const Sidebar = () => {
   const { logOut } = useAuth();
@@ -74,6 +75,7 @@ const Sidebar = () => {
             {/*  Menu Items */}
             <nav>{role === 'member' && <MemberMenu />}</nav>
             <nav>{role === 'member' && <TrainerMenu />}</nav>
+            <nav>{role === 'member' && <AdminMenu />}</nav>
           </div>
         </div>
 
