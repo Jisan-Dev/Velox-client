@@ -4,20 +4,29 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import SlotDataRow from './SlotDataRow';
+import axiosPublic from '@/hooks/useAxiosPublic';
+import Spinner from '@/components/Spinner';
 
 const ManageSlots = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  const { data = {}, refetch } = useQuery({
+  const {
+    data = {},
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ['trainer', user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`/trainer/${user?.email}`);
+      const { data } = await axiosPublic.get(`/trainer/${user?.email}`);
       return data.availableSlotsDetails;
     },
   });
   console.log(data);
+  {
+    isLoading && <Spinner />;
+  }
   return (
     <div>
       <div className="container mx-auto px-4 sm:px-8">
@@ -44,11 +53,7 @@ const ManageSlots = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
-                  {data.map((item) => (
-                    <SlotDataRow key={item?._id} slot={item} refetch={refetch} />
-                  ))}
-                </tbody>
+                <tbody>{data.length > 0 && data?.map((item) => <SlotDataRow key={item?._id} slot={item} refetch={refetch} />)}</tbody>
               </table>
             </div>
           </div>

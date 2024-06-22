@@ -18,6 +18,7 @@ import BeATrainer from '@/pages/be-trainer/BeATrainer';
 import ActivityLog from '@/pages/dashboard/member/activity-log/ActivityLog';
 import BookedTrainers from '@/pages/dashboard/member/booked=trainers/BookedTrainers';
 import ManageSlots from '@/pages/dashboard/trainer/manage-slots/ManageSlots';
+import AddSlot from '@/pages/dashboard/trainer/add-slot/AddSlot';
 
 const router = createBrowserRouter([
   {
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/manage-slots',
         element: <ManageSlots />,
+      },
+      {
+        path: '/dashboard/add-slot',
+        element: <AddSlot />,
       },
     ],
   },
