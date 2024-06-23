@@ -3,6 +3,7 @@ import TrainerCard from '@/components/TrainerCard';
 import axiosPublic from '@/hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const AllTrainers = () => {
   const { data: trainers } = useQuery({
@@ -15,6 +16,9 @@ const AllTrainers = () => {
 
   return (
     <div className="py-20">
+      <Helmet>
+        <title>Velox | Trainers</title>
+      </Helmet>
       <SectionHeader heading="All Trainers" subHeading="We provide you experienced and expert trainers to help you achieve your health goals and lifestyle" />
 
       <section className="bg-white">

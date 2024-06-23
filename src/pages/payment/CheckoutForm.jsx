@@ -4,6 +4,7 @@ import axiosPublic from '@/hooks/useAxiosPublic';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ price, selectedSlot, classes, trainerId }) => {
   const { user } = useAuth();
@@ -12,6 +13,7 @@ const CheckoutForm = ({ price, selectedSlot, classes, trainerId }) => {
   const [clientSecret, setClientSecret] = useState('');
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (price > 0) {
@@ -78,6 +80,7 @@ const CheckoutForm = ({ price, selectedSlot, classes, trainerId }) => {
       console.log(data);
       if (data?.paymentResult?.insertedId) {
         toast.success('payment successful');
+        navigate('/dashboard/booked-trainers');
       }
     }
   };

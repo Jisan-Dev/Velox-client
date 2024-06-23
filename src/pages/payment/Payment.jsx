@@ -6,6 +6,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useQuery } from '@tanstack/react-query';
 import CheckoutForm from './CheckoutForm';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 
@@ -22,6 +23,9 @@ const Payment = () => {
   return (
     <section className="pt-20 container mx-auto">
       <SectionHeader heading={'PAYMENT'} />
+      <Helmet>
+        <title>Velox | Payment</title>
+      </Helmet>
 
       <div className="w-full max-w-5xl mx-auto p-8">
         <div className="bg-white rounded-lg shadow-lg p-6 pb-2">
@@ -111,7 +115,6 @@ const Payment = () => {
               <Elements stripe={stripePromise}>
                 <CheckoutForm price={data?.price} selectedSlot={data?.selectedSlot} classes={data?.classes} trainerId={data?.trainerId} />
               </Elements>
-              bookedTrainerId
             </div>
           </div>
         </div>

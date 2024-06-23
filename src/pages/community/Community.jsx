@@ -2,6 +2,7 @@ import ForumCard from '@/components/ForumCard';
 import axiosPublic from '@/hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const Community = () => {
   const [itemsPerPage, setItemsPerPage] = useState(6);
@@ -26,6 +27,9 @@ const Community = () => {
   const pages = [...Array(numberOfPages).keys()].map((element) => element + 1);
   return (
     <div className="container mx-auto pt-28 py-20">
+      <Helmet>
+        <title>Velox | Community</title>
+      </Helmet>
       <div className="grid md:grid-cols-3 gap-6">
         {data.map((post) => (
           <ForumCard key={post._id} data={post} refetch={refetch} />

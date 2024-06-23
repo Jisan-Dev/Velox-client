@@ -12,7 +12,7 @@ const Profile = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <Helmet>
-        <title>Profile</title>
+        <title>Velox | Profile</title>
       </Helmet>
       <div className="bg-white shadow-lg rounded-2xl w-3/5">
         <img alt="profile" src="https://wallpapercave.com/wp/1CQ4TK7.jpg" className="w-full mb-4 rounded-t-lg h-48 object-cover object-top" />

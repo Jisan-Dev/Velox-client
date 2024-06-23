@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
@@ -35,6 +36,9 @@ const AddNewClass = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Add Class</title>
+      </Helmet>
       <div className="container mx-auto">
         <div className="flex justify-center items-center min-h-[calc(100vh-360px)] py-32 px-6">
           <section className="p-2 md:p-6 w-full mx-auto bg-white rounded-md shadow-lg ">

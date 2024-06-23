@@ -3,6 +3,7 @@ import useAuth from '@/hooks/useAuth';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import useRole from '@/hooks/useRole';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 
 const AddForum = () => {
@@ -27,6 +28,9 @@ const AddForum = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Add Forum</title>
+      </Helmet>
       <div className="container mx-auto">
         <div className="flex justify-center items-center min-h-[calc(100vh-360px)] py-16 px-6">
           <section className="p-2 md:p-6 w-full mx-auto bg-white rounded-md shadow-lg ">

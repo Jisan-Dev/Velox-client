@@ -1,12 +1,16 @@
 import { Button } from '@/components/ui/button';
 import img from '../../assets/images/hero2.jpg';
 import { Link, useLoaderData } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const TrainerDetails = () => {
   const { data } = useLoaderData();
   console.log(data);
   return (
     <div className="py-20 container mx-auto">
+      <Helmet>
+        <title>Trainer Details</title>
+      </Helmet>
       <h1 className="mt-6 font-semibold text-5xl text-center mb-20">
         All Details About The Trainer <br /> <span className="text-orange-600">{data.trainerName ?? data.name}</span>{' '}
       </h1>

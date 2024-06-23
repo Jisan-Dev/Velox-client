@@ -3,6 +3,7 @@ import useAuth from '@/hooks/useAuth';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import Select from 'react-select';
 
@@ -54,6 +55,9 @@ const AddSlot = () => {
   return (
     <div>
       <div className="container mx-auto">
+        <Helmet>
+          <title>Add Slot</title>
+        </Helmet>
         <div className="flex justify-center items-center min-h-[calc(100vh-360px)] py-32 px-6">
           <section className="p-2 md:p-6 w-full mx-auto bg-white rounded-md shadow-lg ">
             <h2 className="text-4xl mb-4 font-semibold text-gray-700 capitalize ">Add Slot</h2>

@@ -1,7 +1,7 @@
 import React from 'react';
 import MenuItem from './MenuItem';
 import { RxActivityLog } from 'react-icons/rx';
-import { FcSettings } from 'react-icons/fc';
+import { HiClipboardCheck } from 'react-icons/hi';
 import { MdAdminPanelSettings } from 'react-icons/md';
 
 const MemberMenu = () => {
@@ -9,7 +9,7 @@ const MemberMenu = () => {
     <>
       <MenuItem address="/dashboard/activity-log" icon={RxActivityLog} label="Activity Log" />
       <MenuItem address="/dashboard/profile" icon={MdAdminPanelSettings} label="Profile" />
-      <MenuItem address="/dashboard/booked-trainers" icon={MdAdminPanelSettings} label="Booked Trainers" />
+      <MenuItem address="/dashboard/booked-trainers" icon={HiClipboardCheck} label="Booked Trainers" />
     </>
   );
 };
