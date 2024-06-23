@@ -52,7 +52,7 @@ const AppliedTrainerRow = ({ user, trainerRefetch }) => {
       <UpdateRoleModal refetch={refetch} trainerRefetch={trainerRefetch} user={user} />
       <td>
         <div>
-          {user?.status === 'Pending' && <Button onClick={() => setOpen(true)}>Reject</Button>}
+          {user?.status === 'pending' && <Button onClick={() => setOpen(true)}>Reject</Button>}
           <Dialog className="relative z-50" open={open} onClose={() => setOpen(false)}>
             <DialogBackdrop
               transition
