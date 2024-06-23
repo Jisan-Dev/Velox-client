@@ -27,6 +27,7 @@ import Welcome from '@/pages/dashboard/common/Welcome';
 import TrainerRoute from './TrainerRoute';
 import Trainers from '@/pages/dashboard/admin/Trainers/Trainers';
 import Community from '@/pages/community/Community';
+import AddNewClass from '@/pages/dashboard/admin/add-class/AddNewClass';
 
 const router = createBrowserRouter([
   {
@@ -186,6 +187,16 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <AdminRoute>
               <Trainers />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/dashboard/add-class',
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AddNewClass />
             </AdminRoute>
           </PrivateRoute>
         ),

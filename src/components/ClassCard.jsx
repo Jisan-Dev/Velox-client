@@ -19,7 +19,7 @@ const ClassCard = ({ classObj }) => {
 
           <div className="trainers mt-4">
             <h3 className="text-lg font-medium text-neutral-800 mb-2">Trainers who took this class</h3>
-            {classObj.trainers.map((trainer) => (
+            {classObj?.trainers?.map((trainer) => (
               <Link to={`/trainers/${trainer.trainerObjId}`} key={trainer.trainerObjId}>
                 <span title={trainer.name} className="relative inline-flex items-center justify-center  text-white rounded-full">
                   <img src={trainer.image} alt="trainer name" className="w-12 h-12 rounded-full object-cover object-top mr-2" />
