@@ -11,6 +11,7 @@ const AdminMenu = () => {
       <MenuItem address="/dashboard/applied-trainers" icon={RxActivityLog} label="Applied Trainers" />
       <MenuItem address="/dashboard/trainers" icon={RxActivityLog} label="All Trainers" />
       <MenuItem address="/dashboard/add-class" icon={RxActivityLog} label="Add New Class" />
+      <MenuItem address="/dashboard/balance" icon={RxActivityLog} label="Balance" />
     </>
   );
 };

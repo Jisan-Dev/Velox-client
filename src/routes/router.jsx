@@ -28,6 +28,7 @@ import TrainerRoute from './TrainerRoute';
 import Trainers from '@/pages/dashboard/admin/Trainers/Trainers';
 import Community from '@/pages/community/Community';
 import AddNewClass from '@/pages/dashboard/admin/add-class/AddNewClass';
+import Balance from '@/pages/dashboard/admin/Balance/Balance';
 
 const router = createBrowserRouter([
   {
@@ -197,6 +198,16 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <AdminRoute>
               <AddNewClass />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/dashboard/balance',
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <Balance />
             </AdminRoute>
           </PrivateRoute>
         ),
