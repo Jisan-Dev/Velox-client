@@ -3,9 +3,12 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import useAuth from '@/hooks/useAuth';
+import { Dialog as Dialogg, DialogBackdrop, DialogPanel, DialogTitle as DialoggTitle } from '@headlessui/react';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
 import { FaEye } from 'react-icons/fa';
+import RejectionModal from './RejectionModal';
+import { useState } from 'react';
 
 function UpdateRoleModal({ refetch, trainerRefetch, user }) {
   const axiosSecure = useAxiosSecure();
@@ -22,43 +25,39 @@ function UpdateRoleModal({ refetch, trainerRefetch, user }) {
       trainerRefetch();
     }
   };
-  const deleteHandler = async () => {
-    const { data } = await axiosSecure.put(`/users/reject/${user?.email}`, {
-      status: 'Rejected',
-    });
-    console.log(data);
-    if (data.modifiedCount > 0) {
-      toast.success('Successfully Rejected!');
-      refetch();
-      trainerRefetch();
-    }
-  };
+
+  // function open() {
+  //   setOpen(true)
+  // }
+
+  // function close() {
+  //   setOpen(false)
+  // }
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <button className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-            <FaEye className="w-5 h-5 ml-3" />
-          </button>
-        </td>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Update Role</DialogTitle>
-          <DialogDescription>Make changes to your user roles here.</DialogDescription>
-        </DialogHeader>
-        <div>
-          <DialogFooter>
-            <DialogClose onClick={confirmHandler}>
-              <Button>Confirm</Button>
-            </DialogClose>
-            <DialogClose onClick={deleteHandler}>
-              <Button>Reject</Button>
-            </DialogClose>
-          </DialogFooter>
-        </div>
-      </DialogContent>
-    </Dialog>
+    <div>
+      <Dialog>
+        <DialogTrigger asChild>
+          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+            <button className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+              <FaEye className="w-5 h-5 ml-3" />
+            </button>
+          </td>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Update Role</DialogTitle>
+            <DialogDescription>Make changes to your user roles here.</DialogDescription>
+          </DialogHeader>
+          <div>
+            <DialogFooter>
+              <DialogClose onClick={confirmHandler}>
+                <Button>Confirm</Button>
+              </DialogClose>
+            </DialogFooter>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
   );
 }
 

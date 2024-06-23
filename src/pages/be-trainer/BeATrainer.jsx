@@ -28,7 +28,7 @@ const BeATrainer = () => {
     const mainFormDat = Object.fromEntries(formData.entries());
     const selectedValues = selectedOptions.map((option) => option.value);
     mainFormDat.availableDays = selectedValues;
-    mainFormDat.skill = selectedSkills;
+    mainFormDat.expertise = selectedSkills;
     mainFormDat.status = 'pending';
     console.log(mainFormDat);
     try {
@@ -60,7 +60,7 @@ const BeATrainer = () => {
                     </label>
                     <input
                       id="name"
-                      name="name"
+                      name="trainerName"
                       type="text"
                       defaultValue={user?.displayName}
                       required

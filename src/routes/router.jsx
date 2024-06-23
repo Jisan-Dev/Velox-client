@@ -29,6 +29,7 @@ import Trainers from '@/pages/dashboard/admin/Trainers/Trainers';
 import Community from '@/pages/community/Community';
 import AddNewClass from '@/pages/dashboard/admin/add-class/AddNewClass';
 import Balance from '@/pages/dashboard/admin/Balance/Balance';
+import AddForum from '@/pages/dashboard/admin/add-forum/AddForum';
 
 const router = createBrowserRouter([
   {
@@ -209,6 +210,26 @@ const router = createBrowserRouter([
             <AdminRoute>
               <Balance />
             </AdminRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/dashboard/add-forum',
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AddForum />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/dashboard/trainer/add-forum',
+        element: (
+          <PrivateRoute>
+            <TrainerRoute>
+              <AddForum />
+            </TrainerRoute>
           </PrivateRoute>
         ),
       },
