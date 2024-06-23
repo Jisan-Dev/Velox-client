@@ -1,11 +1,21 @@
-# React + Vite
+# Velox | where fitness meets progress
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## live link : [https://a12-velox.web.app/](https://a12-velox.web.app/)
 
-Currently, two official plugins are available:
+## Admin credentials
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+admin-email: chacha@chachi.com,
+admin-pass: Pa$$w0rd,
 
-<!-- LOGO: app.logomakr.com/9djgvQ -->
-<!-- fav: app.logomakr.com/5alyn0 -->
+## Key features
+
+- Responsive Design: Ensures seamless user experience across all devices (desktop, tablet, mobile).
+- User-Friendly Navigation: Clear and intuitive menus and search functionalities for easy access to information.
+- Informative Content: High-quality content covering fitness topics, workout routines, nutrition tips, and motivational stories.
+- Interactive Workouts and Training Programs: Offers virtual workout classes, personalized training plans, and progress tracking tools.
+- Membership Management System: Allows users to sign up for memberships, book sessions, and manage their accounts.
+- Social Integration: Enables users to connect with friends, share achievements, and participate in fitness communities.
+- Online Booking and Scheduling: Streamlines scheduling of classes, consultations, and trainer sessions.
+- Nutrition Tracking and Meal Planning: Provides tools for tracking food intake, building meal plans, and achieving dietary goals.
+- Progress Tracking and Analytics: Offers features to track workout progress, set fitness goals, and gain data-driven insights.
+- Secure Payment Gateway: Ensures secure transactions for memberships, equipment purchases, or online coaching services.
