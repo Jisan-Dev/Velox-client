@@ -18,7 +18,7 @@ const UserDataRow = ({ user }) => {
         {user?.status ? <p className="whitespace-no-wrap text-yellow-500 font-medium">{user.status}</p> : <p className="text-red-500 whitespace-no-wrap">N/A</p>}
       </td>
 
-      <FeedBackModal user={user} />
+      {user.status === 'Rejected' && <FeedBackModal user={user} />}
     </tr>
   );
 };
