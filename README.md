@@ -1,6 +1,7 @@
 # Velox | where fitness meets progress
 
 ## live link : [https://a12-velox.web.app/](https://a12-velox.web.app/)
+server repo: https://github.com/Jisan-Dev/Velox-server
 
 ## Admin credentials
 
