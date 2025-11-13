@@ -9,7 +9,7 @@ The platform supports secure online membership purchases and class slot bookings
 
 ## Admin credentials
 
-admin-email: chacha@chachi.com,
+admin-email: chacha@chachi.com, <br>
 admin-pass: Pa$$w0rd,
 
 ## Key features
