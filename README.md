@@ -3,8 +3,8 @@ Velox Fitness is a comprehensive digital platform designed to streamline and enh
 
 The platform supports secure online membership purchases and class slot bookings through an integrated Stripe-based payment system. Velox Fitness is fully accessible across all devices, delivering a consistent and responsive user experience.
 
-## live link : [https://a12-velox.web.app/](https://a12-velox.web.app/)
-server repo: https://github.com/Jisan-Dev/Velox-server
+**live link : [https://a12-velox.web.app/](https://a12-velox.web.app/)**
+**server repo: https://github.com/Jisan-Dev/Velox-server**
 
 ## Admin credentials
 
